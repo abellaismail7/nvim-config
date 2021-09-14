@@ -1,4 +1,3 @@
-
 local packer = require"packer"
 
 local use = packer.use
@@ -78,9 +77,8 @@ return packer.startup(function()
   }
   use {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
     config = function()
-         require("plugins.configs.others").blankline()
+         require("config.others").blankline()
     end,
   }
 

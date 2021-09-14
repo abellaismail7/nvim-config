@@ -25,7 +25,7 @@ vim.api.nvim_set_option("splitright",true)
 vim.api.nvim_set_option("expandtab",true)
 vim.api.nvim_set_option("hidden",true)
 
-vim.cmd("au! VimEnter * if isdirectory(expand('%')) | Dashboard  | endif ")
+vim.cmd("au VimEnter * if isdirectory(expand('%')) | Dashboard  | endif ")
 vim.cmd("set fillchars=eob:\\ ")
 vim.cmd('let mapleader = " "')
 vim.cmd("colo dracula")
