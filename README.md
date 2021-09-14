@@ -1,2 +1,2 @@
 # My Nvim Story
-Inspired by early version of (https://github.com/NvChad/NvChad)[NvChad] story 
+Inspired by early version of [NvChad](https://github.com/NvChad/NvChad) story 
