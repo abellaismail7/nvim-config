@@ -63,17 +63,3 @@ require("telescope").setup {
 }
 
 require("telescope").load_extension('fzy_native')
-local opt = {noremap = true, silent = true}
-
-vim.g.mapleader = " "
-
--- mappings
-vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fa", [[<Cmd>lua require('telescope.builtin').find_files({cwd="app/src/main",path_display={'tail'}})<CR>]], opt)
-
-vim.api.nvim_set_keymap("n", "<Leader>fb", [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fh", [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fo", [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fn", [[<Cmd>lua require('telescope.builtin').file_browser()<CR>]], opt)
-
-vim.api.nvim_set_keymap("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)

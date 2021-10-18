@@ -7,6 +7,7 @@ local black2 = darker_black
 local one_bg2 = "#282A36"
 local light_grey = "#F8F8F2"
 local grey_fg = light_grey
+local indent_fg = "#242933"
 
 -- for guifg , bg
 
@@ -28,6 +29,7 @@ end
 local str_color = "#98C379"
 local light_bg  = "#292F36"
 local dark_bg   = "#1F262E"
+local dark_bg2  = "#2e3133"
 local green     = "#7BE49F"
 local blue      = "#81A1C1"
 local yellow    = "#EBCB8B"
@@ -46,7 +48,7 @@ local normal= "none"
 local grey = "#6272A4"
 local mline = "#1E2029"
 -- blankline
-fg("IndentBlanklineChar", line)
+fg("IndentBlanklineChar", indent_fg)
 
 -- misc --
 fg("Keyword", yellow)

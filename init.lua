@@ -31,6 +31,7 @@ vim.cmd('let mapleader = " "')
 vim.cmd("colo dracula")
 vim.cmd("syntax on")
 
+
 require"highlights"
 require"mappings"
 
