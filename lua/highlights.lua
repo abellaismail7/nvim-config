@@ -68,8 +68,13 @@ fg("Whitespace",        grey)
 -- Pmenu
 bg("Pmenu",         dark_bg)
 bg("PmenuSbar",     one_bg2)
-bg("PmenuSel",      green)
+bg("PmenuSel",      str_green)
 bg("PmenuThumb",    blue)
+
+-- Cmp
+fg("CmpItemKind",  grey_fg)
+fg("CmpItemAbbr",  grey_fg)
+fg("CmpItemMenu",  grey_fg)
 
 -- git signs ---
 fg_bg("DiffAdd",        blue,       "none")
