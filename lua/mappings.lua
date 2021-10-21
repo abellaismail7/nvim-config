@@ -10,7 +10,7 @@ end
 --local opt = {silent = true}
 
 ------------
----windows
+--- Windows
 ------------
 
 -- create
@@ -28,13 +28,19 @@ map("n", "<leader>w=",  [[<C-w>=]])
 map("n", "<leader>wm", [[:MaximizerToggle! <CR>]])
 
 -- navigation
-map("n", "<leader>wh", 		[[<C-w>h]])
-map("n", "<leader>wj", 		[[<C-w>j]])
-map("n", "<leader>wk", 		[[<C-w>k]])
-map("n", "<leader>wl", 		[[<C-w>l]])
+map("n", "<leader>wh", 		[[:wincmd h<cr>]])
+map("n", "<leader>wj", 		[[:wincmd j<cr>]])
+map("n", "<leader>wk", 		[[:wincmd k<cr>]])
+map("n", "<leader>wl", 		[[:wincmd l<cr>]])
 
 -- close
 map("n", "<leader>wc", 		[[<C-w>c]])
+
+-- switch split
+map("n", "<leader>wsh", 		[[:wincmd H<cr>]])
+map("n", "<leader>wsj", 		[[:wincmd J<cr>]])
+map("n", "<leader>wsk", 		[[:wincmd K<cr>]])
+map("n", "<leader>wsl", 		[[:wincmd L<cr>]])
 
 --------------
 --- Run
@@ -50,7 +56,6 @@ map("n", "<leader>ra", [[ :lua require('run.android').run()<CR> ]])
 -- Terminal
 map("n", "<leader>ot", [[:belowright 10split | terminal <CR>]])
 
-
 -------------
 --- buffers
 -------------
@@ -60,8 +65,6 @@ map("n", "<leader>bs", [[:w]]) -- save buffer
 -- BufferLine
 map("n", "<leader>.", [[<Cmd>BufferLineCycleNext<CR>]])
 map("n", "<leader>,", [[<Cmd>BufferLineCyclePrev<CR>]])
-
-
 
 -------------
 -- telescope
@@ -82,9 +85,9 @@ map("n", "<Leader>fa",      [[:lua require('telescope.builtin').find_files({cwd=
 -- git
 map("n", "<leader>fg",  	[[:lua require('telescope.builtin').git_files()<CR>]])
 
-----------------------------
---- what the hell is that
----------------------------
+--- ------------------------
+--- Other
+--- ------------------------
 
 -- registers
 map("v", "p", 	[["_dP]])
@@ -94,9 +97,6 @@ map("v", "<leader>y", 	[["+y]])
 map("n", "<leader>Y", 	[["+Y]])
 
 map("n", "<leader>i", 	[[p<C-a>Y]] )
-
-map("i", "<expr> <Tab>  ",  [[pumvisible() ? "\<C-n>" : "\<Tab>"]])
-map("i", "<expr> <S-Tab>",  [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]])
 
 -- terminal
 map("t","<Esc>", [[ <C-\><C-n>]])
