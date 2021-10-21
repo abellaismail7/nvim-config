@@ -4,7 +4,7 @@ if not present then
    return
 end
 
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noselect"
 
 
 local check_back_space = function()
@@ -68,6 +68,7 @@ cmp.setup {
       end,
    },
    sources = {
+      { name = 'luasnip' },
       { name = "nvim_lsp" },
       { name = "buffer" },
       { name = "nvim_lua" },
