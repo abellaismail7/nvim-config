@@ -44,6 +44,7 @@ return packer.startup(function()
   use 'tjdevries/nlua.nvim'
   use 'tjdevries/lsp_extensions.nvim'
 
+  -- completion
   use {
     'hrsh7th/nvim-cmp',
     after = "friendly-snippets",
@@ -78,6 +79,7 @@ return packer.startup(function()
     "hrsh7th/cmp-buffer",
     after = "nvim-cmp",
   }
+
   -- FZF
   use{
     'nvim-telescope/telescope.nvim',

@@ -4,7 +4,7 @@ local M = {}
 function M.blankline()
    require("indent_blankline").setup {
       indentLine_enabled = 1,
-      char = "▏",
+      char = "┆",
       filetype_exclude = {
          "help",
          "terminal",
