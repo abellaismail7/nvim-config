@@ -70,7 +70,7 @@ map("n", ",s", [[ :Step<cr> ]])
 -----------
 
 -- Terminal
-map("n", "<leader>ot", [[:belowright 10split | terminal <CR>]])
+map("n", "<leader>ot", [[:lua require('ft_terminal').open()<cr>]])
 
 -------------
 --- buffers
