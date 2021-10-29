@@ -8,8 +8,9 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map("n", "<leader>dd",[[ :call vimspector#Launch()<CR> ]],{noremap = true})
-map("n", "<leader>dr",[[ :VimspectorReset<CR> ]],{noremap = true})
-map("n", "<leader>do",[[ :VimspectorShowOutput<CR> ]],{noremap = true})
-map("n", "<leader>dw",[[ :VimspectorWatch<CR> ]],{noremap = true})
-map("n", "<leader>dv",[[ :VimspectorEval<CR> ]],{noremap = true})
+map("n", "<leader>dvd",[[ :call vimspector#Launch()<CR> ]],{noremap = true})
+map("n", "<leader>dvr",[[ :VimspectorReset<CR> ]],{noremap = true})
+map("n", "<leader>dvo",[[ :VimspectorShowOutput<CR> ]],{noremap = true})
+map("n", "<leader>dvw",[[ :VimspectorWatch<CR> ]],{noremap = true})
+map("n", "<leader>dvv",[[ :VimspectorEval<CR> ]],{noremap = true})
+

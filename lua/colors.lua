@@ -2,6 +2,7 @@
 return {
     none          = "none",
     white         = "#FFFFFF",
+    black         = "#000000",
     one_bg2       = "#282A36",
     normal_darker = "#101217",
     darker_bg     = "#1E2029",

@@ -49,6 +49,22 @@ map("n", "<leader>wsl", 		[[:wincmd L<cr>]])
 -- Android
 map("n", "<leader>ra", [[ :lua require('run.android').run()<CR> ]])
 
+--------------
+--- Debug
+--------------
+
+map("n", "<leader>dr", [[ :lua require'run.debug'.run()<cr> ]])
+map("n", "<leader>d=", [[ :lua require'run.debug'.resize()<cr> ]])
+map("n", "<leader>dg", [[ :Gdb<cr> ]])
+map("n", "<leader>dp", [[ :Program<cr> ]])
+map("n", "<leader>ds", [[ :Source<cr> ]])
+map("n", "<leader>da", [[ :Asm<cr> ]])
+map("n", "<leader>db", [[ :Break<cr> ]])
+map("n", "<leader>dl", [[ :Clear<cr> ]])
+map("n", ",c", [[ :Continue<cr> ]])
+map("n", ",n", [[ :Over<cr> ]])
+map("n", ",s", [[ :Step<cr> ]])
+
 -----------
 --- Open
 -----------

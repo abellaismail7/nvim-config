@@ -21,6 +21,7 @@ end
 
 local none          = colors.none
 local white         = colors.white
+local black         = colors.black
 local one_bg2       = colors.one_bg2
 local grey_fg       = colors.grey_fg
 local normal_darker = colors.normal_darker
@@ -71,6 +72,9 @@ bg("PmenuSbar",     one_bg2)
 bg("PmenuSel",      str_green)
 bg("PmenuThumb",    blue)
 
+-- debug
+bg("debugPC", black)
+fg_bg("debugBreakpoint", white, black)
 -- Cmp
 fg("CmpItemKind",  grey_fg)
 fg("CmpItemAbbr",  grey_fg)
