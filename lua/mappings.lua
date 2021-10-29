@@ -49,6 +49,15 @@ map("n", "<leader>wsl", 		[[:wincmd L<cr>]])
 -- Android
 map("n", "<leader>ra", [[ :lua require('run.android').run()<CR> ]])
 
+-- Make c
+map("n", "<leader>rmm", [[ :make ]])
+map("n", "<leader>rmc", [[ :make clean ]])
+map("n", "<leader>rma", [[ :make fclean ]])
+map("n", "<leader>rmr", [[ :make fclean all ]])
+
+-- Norm
+map("n", "<leader>rn", [[ :! norminette % ]])
+
 --------------
 --- Debug
 --------------
@@ -116,4 +125,9 @@ map("n", "<leader>i", 	[[p<C-a>Y]] )
 
 -- terminal
 map("t","<Esc>", [[ <C-\><C-n>]])
+
+---- COMMANDS
+vim.cmd("command -complete=lua -nargs=+ Inspect :lua print(vim.inspect(<args>))")
+vim.cmd("command -nargs=* Gcc :lua require'run.gcc'.run('') ")
+vim.cmd("command -nargs=* GccWall :lua require'run.gcc'.run('-Wall -Werror -Wextra') ")
 
