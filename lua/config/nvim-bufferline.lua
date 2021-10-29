@@ -2,7 +2,9 @@ local normal_darker = "#101217"
 
 require("bufferline").setup{
     options={
-		numbers = "ordinal",
+		numbers = function (ops)
+		    return "" .. ops.ordinal
+		end,
 		offsets = {{filetype = "NvimTree", text = "", padding = 1}},
 		indicator_icon = '',
         show_close_icon=false,

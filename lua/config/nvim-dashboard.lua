@@ -7,8 +7,15 @@ g.dashboard_disable_at_vimenter = 0
 g.dashboard_disable_statusline = 1
 g.dashboard_default_executive = "telescope"
 g.dashboard_custom_header = {
-   "Blazing Fast Editor"
+[[ _  _  ____    _   _                 _            ]],
+[[| || ||___ \  | \ | | ___  _____   _(_)_ __ ___   ]],
+[[| || |_ __) | |  \| |/ _ \/ _ \ \ / / | '_ ` _ \  ]],
+[[|__   _/ __/  | |\  |  __/ (_) \ V /| | | | | | | ]],
+[[   |_||_____| |_| \_|\___|\___/ \_/ |_|_| |_| |_| ]],
+[[                                                  ]],
+
 }
+
 
 g.dashboard_custom_section = {
    a = { description = { "  Find File                 SPC f f" }, command = "Telescope find_files" },

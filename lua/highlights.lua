@@ -118,9 +118,10 @@ fg("LspDiagnosticsSignHint",        purple)
 fg("LspDiagnosticsVirtualTextHint", purple)
 
 -- dashboard
-fg("DashboardHeader",   lred)
+fg("DashboardHeader",   str_green)
 fg("DashboardCenter",   grey_fg)
 fg("DashboardShortcut", grey_fg)
+fg("DashboardFooter",   str_green)
 
 -- WhichKey
 fg("WhichKeyDesc",  green)
