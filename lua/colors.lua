@@ -15,6 +15,7 @@ return {
     yellow        = "#EBCB8B",
     lyellow       = "#F1FA8C",
     lred          = "#FFD7D7",
+    brown         = "#282828",
     red           = "#FF6E6E",
     grey          = "#6272A4",
     grey_fg       = "#F8F8F2",

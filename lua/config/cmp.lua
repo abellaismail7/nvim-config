@@ -70,7 +70,13 @@ cmp.setup {
    sources = {
       { name = 'luasnip' },
       { name = "nvim_lsp" },
-      { name = "buffer" },
       { name = "nvim_lua" },
+      { name = "buffer" },
    },
 }
+
+cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+})

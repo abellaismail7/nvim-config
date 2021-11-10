@@ -20,6 +20,9 @@ vim.api.nvim_set_option("arabicshape",true)
 vim.api.nvim_set_option("encoding","UTF-8")
 vim.api.nvim_set_option("splitright",true)
 vim.api.nvim_set_option("hidden",true)
+vim.api.nvim_set_option("wildoptions", "pum")
+vim.api.nvim_set_option("pumblend", 5)
+vim.api.nvim_set_option("wildmode", "longest:full,full")
 
 -- indent
 vim.api.nvim_set_option("autoindent",true)

@@ -48,7 +48,6 @@ fg("Type",              green)
 fg("Function",          dark_green)
 fg("Identifier",        dark_green)
 
-fg("LineNr",            grey)
 fg("Comment",           grey)
 
 fg("NvimInternalError", lred)
@@ -61,13 +60,14 @@ bg("CursorLine",        darker_bg)
 cmd("hi clear StatusLineNc")
 fg("StatusLineNC",      blue)
 fg("StatusLine",        normal_darker)
+bg("MsgArea",           "#191D24")
 
 fg("Whitespace",        grey)
 
 -- Tree Sitter
 
 -- Pmenu
-bg("Pmenu",         dark_bg)
+bg("Pmenu",         colors.brown)
 bg("PmenuSbar",     one_bg2)
 bg("PmenuSel",      str_green)
 bg("PmenuThumb",    blue)
