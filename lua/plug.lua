@@ -133,4 +133,8 @@ return packer.startup(function()
   use {
     'dracula/vim',
   }
+
+  -- 42
+  use 'abellaismail7/42header.nvim'
+  use '42Paris/42header'
 end)

@@ -2,7 +2,6 @@ vim.cmd('cd %:p:h')
 require "unplug"
 require "plug"
 
-
 vim.wo.numberwidth = 2
 vim.wo.number = true
 vim.wo.cul = true
@@ -37,8 +36,6 @@ vim.cmd("syntax on")
 vim.cmd("set listchars +=eol:↴")
 vim.g.termdebug_disasm_window = 10
 vim.g.termdebug_wide = 1
-
-
 
 require"highlights"
 require"mappings"
