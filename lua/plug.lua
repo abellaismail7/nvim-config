@@ -12,7 +12,6 @@ return packer.startup(function()
 
 
   -- snippet support
-  use "hrsh7th/vim-vsnip"
   use "windwp/nvim-autopairs"
   use {
      "rafamadriz/friendly-snippets",
@@ -48,7 +47,6 @@ return packer.startup(function()
   use {
     'hrsh7th/nvim-cmp',
     after = "friendly-snippets",
-    config = [[require"config.cmp"]]
   }
 
   use {
@@ -56,7 +54,8 @@ return packer.startup(function()
       wants = "friendly-snippets",
       after = "nvim-cmp",
       config = function()
-         require("config.others").luasnip()
+        require"config.cmp"
+        require("config.luasnip")
       end,
   }
 
