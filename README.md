@@ -2,6 +2,7 @@
 Inspired by early version of [NvChad](https://github.com/NvChad/NvChad) story 
 
 #keymaps
+I highly recommend to just remember one character after leader key and 'Whichkey' floating window will showup with keymaps you might need.
 
 ## Window
 | key           | Action                                         |
@@ -14,10 +15,25 @@ Inspired by early version of [NvChad](https://github.com/NvChad/NvChad) story
 | <leader> wk   | go to top window                               |
 | <leader> wl   | go to right window                             |
 | <leader> wc   | close window (not buffer)                      |
-| <leader> wth  | move window to max left                        |
-| <leader> wtj  | move window to max bottom                      |
-| <leader> wtk  | move window to max top                         |
-| <leader> wtl  | move window to max right                       |
+| <leader> wH   | move window to max left                        |
+| <leader> wJ   | move window to max bottom                      |
+| <leader> wK   | move window to max top                         |
+| <leader> wL   | move window to max right                       |
+
+## Window
+| key           | Action                                         |
+|---------------|------------------------------------------------|
+| <leader> ld   | go to declaration                              |
+| <leader> lD   | go to definition                               |
+| <leader> li   | got to implementation                          |
+| <leader> lh   | go to hover                                    |
+| <leader> lrn  | rename func_name/vars/....                     |
+| <leader> lre  | Lists all the reference                        |
+| <leader> lf   | format code                                    |
+| <leader> le   | show error line in floating window             |
+| ,a            | list code actions			                     |
+| &lt;C-n&gt;   | move window to max bottom                      |
+| &lt;C-p&gt;   | move window to max top                         |
 
 ## Buffer
 | key           | Action                                         |
@@ -54,7 +70,6 @@ Inspired by early version of [NvChad](https://github.com/NvChad/NvChad) story
 | ,n   			| (gdb) next	 								 |
 | ,s   			| (gdb) step 	 								 |
 
-
 ## Run code
 | key           | Action                                         |
 |---------------|------------------------------------------------|
@@ -71,6 +86,7 @@ Inspired by early version of [NvChad](https://github.com/NvChad/NvChad) story
 | <leader> ot  	| Open terminal in foalting window(Esc to esacpe)|
 | <leader> y	| Copy to system clipboard						 |
 | <leader> Y	| Copy current line to system clipboard			 |
+| <leader> [0-9]| go to buffer N according to tab position 		 |
 
 # Commands
 ```

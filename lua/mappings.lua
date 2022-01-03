@@ -37,10 +37,15 @@ map("n", "<leader>wl", 		[[:wincmd l<cr>]])
 map("n", "<leader>wc", 		[[<C-w>c]])
 
 -- switch split
-map("n", "<leader>wsh", 		[[:wincmd H<cr>]])
-map("n", "<leader>wsj", 		[[:wincmd J<cr>]])
-map("n", "<leader>wsk", 		[[:wincmd K<cr>]])
-map("n", "<leader>wsl", 		[[:wincmd L<cr>]])
+map("n", "<leader>wH", 		[[:wincmd H<cr>]])
+map("n", "<leader>wJ", 		[[:wincmd J<cr>]])
+map("n", "<leader>wK", 		[[:wincmd K<cr>]])
+map("n", "<leader>wL", 		[[:wincmd L<cr>]])
+
+--------------
+--- LSP ./config/nvim-lspconfig.lua
+--- hint : gf to navigate to file under cursor
+--------------
 
 --------------
 --- Run
