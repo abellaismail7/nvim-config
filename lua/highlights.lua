@@ -81,9 +81,9 @@ fg("CmpItemAbbr",  grey_fg)
 fg("CmpItemMenu",  grey_fg)
 
 -- git signs ---
-fg_bg("DiffAdd",        blue,       "none")
-fg_bg("DiffChange",     one_bg2,    "none")
-fg_bg("DiffModified",   blue,       "none")
+fg_bg("DiffAdd", colors.str_green, none)
+fg_bg("DiffChange", colors.yellow, none)
+fg_bg("DiffDelete", colors.lred, none)
 
 -- NvimTree
 fg("NvimTreeFolderIcon",    blue)

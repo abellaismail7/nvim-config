@@ -20,9 +20,14 @@ return packer.startup(function()
 
   -- git
   use {
-    "lewis6991/gitsigns.nvim",
-    opt = true,
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = [[require"config.gitsigns"]]
   }
+
+  use "tpope/vim-fugitive"
 
   -- Debugging
   use {
