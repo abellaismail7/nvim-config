@@ -3,9 +3,7 @@ local g = vim.g
 vim.o.termguicolors = true
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_side = "left"
-g.nvim_tree_ignore = {".git", "node_modules", ".cache", "__pycache__"}
 g.nvim_tree_indent_markers = 1
-g.nvim_tree_hide_dotfiles = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_root_folder_modifier = ":t"
 g.nvim_tree_allow_resize = 1
@@ -53,5 +51,9 @@ require'nvim-tree'.setup {
     view = {
         width = 25,
         side = 'left'
+    },
+    filters = {
+        dotfiles = false,
+        custom = { ".git", "node_modules", ".cache", "__pycache__" }
     },
 }

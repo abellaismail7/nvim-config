@@ -140,22 +140,6 @@ gls.left[10] = {
     }
 }
 
-gls.left[11] = {
-    DiagnosticError = {
-        provider = "DiagnosticError",
-        icon = "  ",
-        highlight = {red, bg}
-    }
-}
-
-gls.left[12] = {
-    DiagnosticWarn = {
-        provider = "DiagnosticWarn",
-        icon = "  ",
-        highlight = {yellow, bg}
-    }
-}
-
 gls.right[1] = {
     lsp_status = {
         provider = function()

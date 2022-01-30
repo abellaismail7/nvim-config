@@ -9,7 +9,7 @@ ts_config.setup {
         "lua",
         "json",
         "python",
-        -- "rust",
+        "rust",
         -- "go"
     },
     highlight = {

@@ -4,7 +4,6 @@ require "plug"
 
 vim.wo.numberwidth = 2
 vim.wo.number = true
-vim.wo.cul = true
 
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.wildmode = "longest,list,full"
