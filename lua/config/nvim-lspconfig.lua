@@ -10,20 +10,20 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
 
-	buf_set_keymap("n", "K", [[:lua vim.lsp.buf.hover()<cr>]], opts);
-	buf_set_keymap("n", "gd", [[:lua vim.lsp.buf.definition()<cr>]], opts) -- CTRL-t jump back
-	buf_set_keymap("n", "gt", [[:lua vim.lsp.buf.type_definition()<cr>]], opts)
-	buf_set_keymap("n", "gi", [[:lua vim.lsp.buf.implementation()<cr>]], opts)
+	buf_set_keymap("n", "K", [[<cmd>lua vim.lsp.buf.hover()<cr>]], opts);
+	buf_set_keymap("n", "gd", [[<cmd>lua vim.lsp.buf.definition()<cr>]], opts) -- CTRL-t jump back
+	buf_set_keymap("n", "gt", [[<cmd>lua vim.lsp.buf.type_definition()<cr>]], opts)
+	buf_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<cr>]], opts)
 
-	buf_set_keymap("n", "<leader>le",	[[:lua vim.lsp.diagnostic.show_line_diagnostics()<cr>]], opts)
-	buf_set_keymap("n", "<leader>ln",	[[:lua vim.lsp.diagnostic.goto_next()<cr>]], opts)
-	buf_set_keymap("n", "<leader>lp",	[[:lua vim.lsp.diagnostic.goto_prev()<cr>]], opts)
+	buf_set_keymap("n", "<leader>le",	[[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>]], opts)
+	buf_set_keymap("n", "<leader>ln",	[[<cmd>lua vim.lsp.diagnostic.goto_next()<cr>]], opts)
+	buf_set_keymap("n", "<leader>lp",	[[<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>]], opts)
 
-	buf_set_keymap("n", "<leader>ld", 	[[:lua vim.lsp.buf.declaration() 					<cr>]], opts)
-	buf_set_keymap("n", "<leader>lrn", 	[[:lua vim.lsp.buf.rename() 						<cr>]], opts)
-	buf_set_keymap("n", "<leader>lre", 	[[:lua vim.lsp.buf.references() 					<cr>]], opts)
-	buf_set_keymap("n", "<leader>lf",	[[:lua vim.lsp.buf.formatting() 					<cr>]], opts)
-	buf_set_keymap("n", ",a",	[[:lua vim.lsp.buf.code_action() 					<cr>]], opts)
+	buf_set_keymap("n", "<leader>ld", 	[[<cmd>lua vim.lsp.buf.declaration()<cr>]], opts)
+	buf_set_keymap("n", "<leader>lrn", 	[[<cmd>lua vim.lsp.buf.rename()<cr>]], opts)
+	buf_set_keymap("n", "<leader>lre", 	[[<cmd>lua vim.lsp.buf.references()<cr>]], opts)
+	buf_set_keymap("n", "<leader>lf",	[[<cmd>lua vim.lsp.buf.formatting()<cr>]], opts)
+	buf_set_keymap("n", ",a",	[[<cmd>lua vim.lsp.buf.code_action()<cr>]], opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
