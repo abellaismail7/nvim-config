@@ -28,9 +28,27 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "clangd", "dartls", "kotlin_language_server", "vuels", "tsserver", "cssls", "html", "svelte", "rust_analyzer" }
+local lua_config = require"config.lua-lang-server"
+local servers = {
+	"pyright",
+	"clangd",
+	"dartls",
+	"kotlin_language_server",
+	"vuels",
+	"tsserver",
+	"cssls",
+	"html",
+	"svelte",
+	"rust_analyzer",
+	{name = "sumneko_lua" , config = lua_config}
+}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+	if type(lsp) == "table" then
+		lsp.config.on_attach = on_attach
+  		nvim_lsp[lsp.name].setup(lsp.config)
+	else
+  		nvim_lsp[lsp].setup { on_attach = on_attach }
+	end
 end
 
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
