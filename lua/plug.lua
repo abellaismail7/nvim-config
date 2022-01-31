@@ -118,11 +118,10 @@ return packer.startup(function()
     config = [[require'config.nvim-bufferline']],
     requires = 'kyazdani42/nvim-web-devicons'
   }
-  --use "glepnir/galaxyline.nvim"
+
   use {
-    -- 'famiu/feline.nvim'
-    'abellaismail7/galaxyline.nvim',
-    config = [[ require'config.statusline']]
+    'famiu/feline.nvim',
+    config = [[ require'config.feline']]
   }
 
   -- Theme

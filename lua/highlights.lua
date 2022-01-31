@@ -52,15 +52,15 @@ fg("Comment",           grey)
 
 fg("NvimInternalError", lred)
 
-fg_bg("VertSplit",      darker_bg, darker_bg)
+fg_bg("VertSplit",      colors.darker_bg, colors.grey)
 fg("LineNr",            grey)
 fg_bg("CursorLineNr",   white,darker_bg )
 bg("CursorLine",        darker_bg)
 
 cmd("hi clear StatusLineNc")
 fg("StatusLineNC",      blue)
-fg("StatusLine",        normal_darker)
-bg("MsgArea",           "#191D24")
+bg("StatusLine",        colors.black)
+bg("MsgArea",           colors.black)
 
 fg("Whitespace",        grey)
 
