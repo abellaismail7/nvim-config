@@ -39,7 +39,6 @@ return packer.startup(function()
   use {
     'neovim/nvim-lspconfig',
     config = function()
-      require"config.lua-lang-server"
       require "config.nvim-lspconfig"
     end
   }
@@ -133,9 +132,7 @@ return packer.startup(function()
     'glepnir/dashboard-nvim',
     config = [[require"config.nvim-dashboard"]]
   }
-  use {
-    'dracula/vim',
-  }
+  use 'dracula/vim'
 
   -- 42
   use 'abellaismail7/42header.nvim'

@@ -39,7 +39,7 @@ cmp.setup({
         luasnip.expand()
      end,{"i", "s"}),
      ["<C-y>"] = cmp.mapping(function ()
-        luasnip.expand_or_jump()
+        luasnip.jump()
      end,{"i", "s"}),
      ["<C-Space>"] = cmp.mapping.complete(),
      ["<CR>"] = cmp.mapping.confirm {
