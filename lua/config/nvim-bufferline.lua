@@ -1,4 +1,4 @@
-local normal_darker = "#101217"
+local colors = require('colors')
 
 require("bufferline").setup{
     options={
@@ -8,6 +8,7 @@ require("bufferline").setup{
 		offsets = {{filetype = "NvimTree", text = "", padding = 1}},
 		indicator_icon = '',
         show_close_icon=false,
+        show_buffer_icons = false,
         show_buffer_close_icons=false,
 		separator_style = "thick",
 		view = "multiwindow",
@@ -15,22 +16,40 @@ require("bufferline").setup{
     },
     highlights = {
         fill = {
-            guibg = normal_darker
+            guibg = "none"
         },
         background = {
-            guibg = normal_darker
+            guibg = "none"
+        },
+        buffer_visible = {
+            guifg = colors.accent,
+        },
+        buffer_selected = {
+            gui = "bold",
+            guibg = colors.accent,
+            guifg = colors.black,
+        },
+        modified_selected = {
+            guibg = colors.accent,
+            guifg = colors.black,
+        },
+        modified_visible= {
+            guifg = colors.accent,
+        },
+        modified = {
+            guifg = colors.grey,
         },
         separator_selected = {
-            guifg = normal_darker,
-            guibg = normal_darker
+            guibg = colors.darker_bg,
+            guifg = colors.darker_bg,
         },
         separator_visible = {
-            guifg = normal_darker,
-            guibg = normal_darker
+            guibg = colors.darker_bg,
+            guifg = colors.darker_bg,
         },
         separator = {
-            guifg = normal_darker,
-            guibg = normal_darker
+            guibg = colors.darker_bg,
+            guifg = colors.darker_bg,
         },
 
     }

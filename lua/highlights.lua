@@ -49,6 +49,7 @@ fg("Function",          dark_green)
 fg("Identifier",        dark_green)
 
 fg("Comment",           grey)
+bg("Search",            lred)
 
 fg("NvimInternalError", lred)
 

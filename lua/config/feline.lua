@@ -140,7 +140,7 @@ require'feline'.setup {
         fg = colors.white,
     },
     vi_mode_colors = {
-        NORMAL = colors.green,
+        NORMAL = colors.accent,
         INSERT = colors.red,
         COMMAND = colors.grey,
         SELECT = colors.orange,
