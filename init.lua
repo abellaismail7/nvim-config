@@ -33,6 +33,7 @@ vim.cmd('let mapleader = " "')
 vim.cmd("colo dracula")
 vim.cmd("syntax on")
 vim.cmd("set listchars +=eol:↴")
+vim.cmd("autocmd BufEnter *.nasm,*.asm setfiletype nasm")
 vim.g.termdebug_disasm_window = 10
 vim.g.termdebug_wide = 1
 
