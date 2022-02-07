@@ -1,11 +1,12 @@
 local present, cmp = pcall(require, "cmp")
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local luasnip = require("luasnip")
 
 if not present then
    return
 end
 
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
-local luasnip = require("luasnip")
 
 cmp.setup({
 
@@ -61,3 +62,6 @@ cmp.setup.cmdline('/', {
       { name = 'buffer' }
     }
 })
+
+
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))

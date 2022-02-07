@@ -10,9 +10,12 @@ return packer.startup(function()
   use 'nvim-lua/popup.nvim'
   use 'szw/vim-maximizer'
 
-
   -- snippet support
-  use "windwp/nvim-autopairs"
+  use {
+    "windwp/nvim-autopairs",
+    config = [[require('nvim-autopairs').setup{}]]
+  }
+
   use {
      "rafamadriz/friendly-snippets",
      event = "InsertEnter",
@@ -95,6 +98,12 @@ return packer.startup(function()
     config = [[require "config.treesitter-nvim"]]
   }
 
+  -- Web Trash
+  use {
+    "windwp/nvim-ts-autotag",
+    config = [[require('nvim-ts-autotag').setup()]]
+  }
+
   -- Help please
   use {
     "folke/which-key.nvim",
@@ -102,6 +111,8 @@ return packer.startup(function()
   }
   use {
     'kyazdani42/nvim-tree.lua',
+    opt = true,
+    keys = "<leader>n",
     config = [[require('config.nvimtree')]]
   }
   use {
@@ -124,7 +135,10 @@ return packer.startup(function()
   }
 
   -- Theme
-  use 'ap/vim-css-color'
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = [[ require 'colorizer'.setup({'*'}, { mode = 'foreground' }) ]]
+  }
   use 'kyazdani42/nvim-web-devicons'
   use 'sheerun/vim-polyglot'
 
