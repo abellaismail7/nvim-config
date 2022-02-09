@@ -68,9 +68,9 @@ fg("Whitespace",        grey)
 -- Tree Sitter
 
 -- Pmenu
-bg("Pmenu",         colors.brown)
+bg("Pmenu",         colors.secondary)
 bg("PmenuSbar",     one_bg2)
-bg("PmenuSel",      str_green)
+bg("PmenuSel",      colors.accent)
 bg("PmenuThumb",    blue)
 
 -- debug
@@ -119,10 +119,10 @@ fg("LspDiagnosticsSignHint",        purple)
 fg("LspDiagnosticsVirtualTextHint", purple)
 
 -- dashboard
-fg("DashboardHeader",   str_green)
-fg("DashboardCenter",   grey_fg)
-fg("DashboardShortcut", grey_fg)
-fg("DashboardFooter",   str_green)
+fg("DashboardHeader",   colors.accent)
+fg("DashboardCenter",   colors.purple)
+fg("DashboardShortcut", colors.white )
+fg("DashboardFooter",   colors.accent)
 
 -- WhichKey
 fg("WhichKeyDesc",  green)

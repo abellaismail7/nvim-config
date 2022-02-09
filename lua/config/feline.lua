@@ -16,7 +16,9 @@ local comps = {}
 
 comps.bar = {
     provider = "▋",
-    hl = {fg = colors.accent}
+    hl = function ()
+        return { fg = vi_colors.get_mode_color() }
+    end
 }
 
 comps.vmode = {
@@ -82,25 +84,24 @@ comps.lsp_is_active = {
             return ""
         end
     end,
-    hl = {
-        fg = colors.accent
-    }
+    hl = function ()
+        return { fg = vi_colors.get_mode_color() }
+    end,
 }
 
 comps.git_branch = {
     provider = "git_branch",
     right_sep = {
         str = " ",
-        hl = { bg = colors.accent }
+        hl = function () return { bg = vi_colors.get_mode_color() } end,
     },
     left_sep = {
         str = " ",
-        hl = { bg = colors.accent }
+        hl = function () return { bg = vi_colors.get_mode_color() } end,
     },
-    hl = {
-        bg = colors.accent,
-        fg = colors.black,
-    }
+    hl = function ()
+        return { bg = vi_colors.get_mode_color(), fg = colors.black }
+    end,
 }
 
 -- useless bar
@@ -141,14 +142,14 @@ require'feline'.setup {
     },
     vi_mode_colors = {
         NORMAL = colors.accent,
-        INSERT = colors.red,
+        INSERT = colors.green,
         COMMAND = colors.grey,
         SELECT = colors.orange,
         SHELL = colors.lyellow,
         TERM = colors.lyellow,
-        VISUAL = colors.blue,
-        LINES = colors.blue,
-        BLOCK = colors.blue,
+        VISUAL = colors.orange,
+        LINES = colors.orange,
+        BLOCK = colors.orange,
         REPLACE = colors.purple,
     }
 }

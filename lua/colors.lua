@@ -7,6 +7,7 @@ return {
     normal_darker = "#101217",
     darker_bg     = "#1E2029",
     dark_bg       = "#1F262E",
+    secondary     = "#1F2335",
     purple        = "#BD93F9",
     green         = "#7BE49F",
     str_green     = "#98C379",
@@ -19,5 +20,5 @@ return {
     red           = "#FF6E6E",
     grey          = "#6272A4",
     grey_fg       = "#F8F8F2",
-    accent        = "#5FD7AF",
+    accent        = "#7AA2F6",
 }
