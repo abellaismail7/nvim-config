@@ -19,23 +19,30 @@ local function calc_size(opts)
     end
     opts.width = math.floor(vim.o.columns * .7)
     opts.minheight = math.floor(line_count * .5)
+    opts.maxheight = line_count - 3;
 end
 
 function M.open()
     if bufnr == -1 or not api.nvim_buf_is_valid(bufnr)
         then
         bufnr = api.nvim_create_buf(false, false)
+        api.nvim_buf_set_option(bufnr, "buflisted", false)
+        api.nvim_buf_set_option(bufnr, "modified", false)
+
         api.nvim_buf_call(bufnr, function ()
             vim.cmd [[
                 edit term://zsh
-                set nobuflisted
-                set nomodified
-                nmap <buffer> <Esc> :lua require('ft_terminal').close()<cr>
+                nmap <silent> <buffer> <Esc> :lua require('ft_terminal').close()<cr>
             ]]
         end)
     end
     calc_size(pop_opts)
-    local win, _ = popup.create(bufnr , pop_opts)
+    local win, opts = popup.create(bufnr , pop_opts)
+    api.nvim_win_set_option(win, "winblend", 5)
+    local border_win = opts and opts.border and opts.border.win_id;
+    if border_win then
+        api.nvim_win_set_option(border_win, "winblend", 5)
+    end
     winnr = win
     api.nvim_win_set_buf(winnr, bufnr);
 end
