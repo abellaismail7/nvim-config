@@ -51,9 +51,12 @@ return packer.startup(function()
     end
   }
 
-  use "onsails/lspkind-nvim"
   use 'tjdevries/nlua.nvim'
   use 'tjdevries/lsp_extensions.nvim'
+  use {
+    "ray-x/lsp_signature.nvim",
+    config = [[require"lsp_signature".setup()]]
+  }
 
   -- completion
   use {
@@ -91,6 +94,10 @@ return packer.startup(function()
     after = "nvim-cmp",
   }
 
+  use {
+	"hrsh7th/cmp-path",
+	after = "cmp-buffer",
+  }
   -- FZF
   use{
     'nvim-telescope/telescope.nvim',
@@ -102,6 +109,7 @@ return packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     config = [[require "config.treesitter-nvim"]]
   }
+  use "nvim-treesitter/playground"
 
   -- Web Trash
   use {
