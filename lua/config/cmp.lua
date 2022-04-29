@@ -35,32 +35,37 @@ cmp.setup({
      end,
   },
 
-  mapping = {
-     ["<C-e>"] = cmp.mapping(function ()
-        luasnip.expand()
-     end,{"i", "s"}),
-     ["<C-y>"] = cmp.mapping(function ()
-        luasnip.jump()
-     end,{"i", "s"}),
-     ["<C-Space>"] = cmp.mapping.complete(),
-     ["<CR>"] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Insert,
-        select = true,
-     },
-  },
+   mapping = cmp.mapping.preset.insert {
+      ["<C-Space>"] = cmp.mapping.complete(),
+      ["<CR>"] = cmp.mapping.confirm {
+         behavior = cmp.ConfirmBehavior.Insert,
+         select = true,
+      },
+   },
 
-  sources = {
+  sources = cmp.config.sources {
      { name = 'luasnip' },
      { name = "nvim_lsp" },
      { name = "nvim_lua" },
-     { name = "buffer", keyword_length = 4 },
+     { name = "buffer" },
   },
 })
 
 cmp.setup.cmdline('/', {
-    sources = {
+   mapping = cmp.mapping.preset.cmdline(),
+   sources = {
       { name = 'buffer' }
-    }
+   }
+})
+
+cmp.setup.cmdline(':', {
+   mapping = cmp.mapping.preset.cmdline(),
+   sources = cmp.config.sources({
+      { name = 'path' }
+   },
+   {
+      { name = 'cmdline' }
+   })
 })
 
 
