@@ -2,6 +2,7 @@ vim.cmd('let g:loaded_python_provider = 0')
 vim.cmd('let g:loaded_ruby_provider = 0')
 vim.cmd('let g:loaded_perl_provider = 0')
 vim.cmd('let g:loaded_node_provider = 0')
+vim.cmd('let g:python3_host_prog = expand("/bin/python")')
 
 local g = vim.g
 -- disable some builtin vim plugins

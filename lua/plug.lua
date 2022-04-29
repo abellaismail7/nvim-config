@@ -5,6 +5,11 @@ local use = packer.use
 return packer.startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use {
+    'lewis6991/impatient.nvim',
+    config = [[ require('impatient') ]]
+
+  }
   -- dependency for nvim plugins
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
