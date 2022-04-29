@@ -1,5 +1,16 @@
 local colors = require('colors')
 
+local selected_hi = {
+    guibg = colors.accent,
+    guifg = colors.black,
+    gui = "bold",
+}
+
+local separator_hi = {
+    guibg = colors.darker_bg,
+    guifg = colors.darker_bg,
+}
+
 require("bufferline").setup{
     options={
 		numbers = function (ops)
@@ -24,33 +35,20 @@ require("bufferline").setup{
         buffer_visible = {
             guifg = colors.accent,
         },
-        buffer_selected = {
-            gui = "bold",
-            guibg = colors.accent,
-            guifg = colors.black,
-        },
-        modified_selected = {
-            guibg = colors.accent,
-            guifg = colors.black,
-        },
         modified_visible= {
             guifg = colors.accent,
         },
         modified = {
             guifg = colors.grey,
         },
-        separator_selected = {
-            guibg = colors.darker_bg,
-            guifg = colors.darker_bg,
-        },
-        separator_visible = {
-            guibg = colors.darker_bg,
-            guifg = colors.darker_bg,
-        },
-        separator = {
-            guibg = colors.darker_bg,
-            guifg = colors.darker_bg,
-        },
+        tab_selected = selected_hi,
+        buffer_selected = selected_hi,
+        duplicate_selected = selected_hi,
+        numbers_selected = selected_hi,
+        modified_selected = selected_hi,
+        separator_selected = separator_hi,
+        separator_visible = separator_hi,
+        separator = separator_hi,
 
     }
 }
