@@ -15,9 +15,9 @@ local on_attach = function(_, bufnr)
 	buf_set_keymap("n", "gt", [[<cmd>lua vim.lsp.buf.type_definition()<cr>]], opts)
 	buf_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<cr>]], opts)
 
-	buf_set_keymap("n", "<leader>le",	[[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>]], opts)
-	buf_set_keymap("n", "<leader>ln",	[[<cmd>lua vim.lsp.diagnostic.goto_next()<cr>]], opts)
-	buf_set_keymap("n", "<leader>lp",	[[<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>]], opts)
+	buf_set_keymap("n", "<leader>le",	[[<cmd>lua vim.lsp.diagnostic.open_float()<cr>]], opts)
+	buf_set_keymap("n", "<leader>ln",	[[<cmd>lua vim.diagnostic.goto_next()<cr>]], opts)
+	buf_set_keymap("n", "<leader>lp",	[[<cmd>lua vim.diagnostic.goto_prev()<cr>]], opts)
 
 	buf_set_keymap("n", "<leader>ld", 	[[<cmd>lua vim.lsp.buf.declaration()<cr>]], opts)
 	buf_set_keymap("n", "<leader>lrn", 	[[<cmd>lua vim.lsp.buf.rename()<cr>]], opts)

@@ -1,11 +1,4 @@
-local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
+local map = vim.keymap.set
 --local empty = {}
 --local opt = {silent = true}
 
@@ -52,7 +45,7 @@ map("n", "<leader>wL", 		[[:wincmd L<cr>]])
 --------------
 
 -- Android
-map("n", "<leader>ra", [[ :lua require('run.android').run()<CR> ]])
+map("n", "<leader>ra", require('run.android').run)
 
 -- Make c
 map("n", "<leader>rmm", [[ :make ]])
@@ -67,8 +60,8 @@ map("n", "<leader>rn", [[ :! norminette % ]])
 --- Debug
 --------------
 
-map("n", "<leader>dr", [[ :lua require'run.debug'.run()<cr> ]])
-map("n", "<leader>d=", [[ :lua require'run.debug'.resize()<cr> ]])
+map("n", "<leader>dr", require'run.debug'.run)
+map("n", "<leader>d=", require'run.debug'.resize)
 map("n", "<leader>dg", [[ :Gdb<cr> ]])
 map("n", "<leader>dp", [[ :Program<cr> ]])
 map("n", "<leader>ds", [[ :Source<cr> ]])
@@ -84,7 +77,7 @@ map("n", ",s", [[ :Step<cr> ]])
 -----------
 
 -- Terminal
-map("n", "<leader>ot", [[:lua require('ft_terminal').open()<cr>]])
+map("n", "<leader>ot", require('ft_terminal').open)
 
 -------------
 --- buffers
@@ -101,19 +94,18 @@ map("n", "<leader>,", [[<Cmd>BufferLineCyclePrev<CR>]])
 -------------
 
 -- basics
-map("n", "<leader>ff",  	[[:lua require('telescope.builtin').find_files()<CR>]])
-map("n", "<leader>fs",  	[[:lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]])
-map("n", "<leader>fw",  	[[:lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>]])
-map("n", "<leader>fb",  	[[:lua require('telescope.builtin').buffers()<CR>]])
-map("n", "<leader>fh",  	[[:lua require('telescope.builtin').help_tags()<CR>]])
-map("n", "<leader>fm",  	[[:lua require('telescope.builtin').marks()<CR>]])
-map("n", "<Leader>fn",      [[<Cmd>lua require('telescope.builtin').file_browser()<CR>]])
+map("n", "<leader>ff", require('telescope.builtin').find_files)
+map("n", "<leader>fb", require('telescope.builtin').buffers)
+map("n", "<leader>fh", require('telescope.builtin').help_tags)
+map("n", "<leader>fm", require('telescope.builtin').marks)
+map("n", "<leader>fs", [[:lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]])
+map("n", "<leader>fw", [[:lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>]])
 
 -- android
-map("n", "<Leader>fa",      [[:lua require('telescope.builtin').find_files({cwd="app/src/main",path_display={'tail'}})<CR>]])
+map("n", "<Leader>fa", [[:lua require('telescope.builtin').find_files({cwd="app/src/main",path_display={'tail'}})<CR>]])
 
 -- git
-map("n", "<leader>fg",  	[[:lua require('telescope.builtin').git_files()<CR>]])
+map("n", "<leader>fg", require('telescope.builtin').git_files)
 
 --- ------------------------
 --- Other
@@ -135,4 +127,3 @@ map("t","<Esc>", [[ <C-\><C-n>]])
 vim.cmd("command -complete=lua -nargs=+ Inspect :lua print(vim.inspect(<args>))")
 vim.cmd("command -nargs=* Gcc :lua require'run.gcc'.run('') ")
 vim.cmd("command -nargs=* GccWall :lua require'run.gcc'.run('-Wall -Werror -Wextra') ")
-
