@@ -10,7 +10,7 @@ ts_config.setup {
         "json",
         "python",
         "rust",
-        -- "go"
+        "go"
     },
     highlight = {
         enable = true,

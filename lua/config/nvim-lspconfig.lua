@@ -39,7 +39,8 @@ local servers = {
 	"cssls",
 	"html",
 	"svelte",
-	"rust_analyzer",
+	"rls",
+	"gopls",
 	{name = "sumneko_lua" , config = lua_config}
 }
 for _, lsp in ipairs(servers) do
