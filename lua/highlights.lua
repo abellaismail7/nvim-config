@@ -82,9 +82,9 @@ fg("CmpItemAbbr",  grey_fg)
 fg("CmpItemMenu",  grey_fg)
 
 -- git signs ---
-fg_bg("DiffAdd", colors.str_green, none)
-fg_bg("DiffChange", colors.yellow, none)
-fg_bg("DiffDelete", colors.lred, none)
+fg_bg("DiffAdd", colors.str_green, colors.bg)
+fg_bg("DiffChange", colors.yellow, colors.bg)
+fg_bg("DiffDelete", colors.lred, colors.bg)
 
 -- NvimTree
 fg("NvimTreeFolderIcon",    blue)
@@ -98,10 +98,10 @@ fg_bg("NvimTreeStatusline",     dark_bg, dark_bg)
 fg_bg("NvimTreeStatuslineNc",   dark_bg, dark_bg)
 
 -- telescope
-fg("TelescopeBorder",           white)
-fg("TelescopePromptBorder",     white)
-fg("TelescopeResultsBorder",    white)
-fg("TelescopePreviewBorder",    white)
+fg_bg("TelescopeBorder",           white, colors.bg)
+fg_bg("TelescopePromptBorder",     white, colors.bg)
+fg_bg("TelescopeResultsBorder",    white, colors.bg)
+fg_bg("TelescopePreviewBorder",    white, colors.bg)
 
 -- LspDiagnostics
 -- error / warnings
@@ -119,14 +119,14 @@ fg("LspDiagnosticsSignHint",        purple)
 fg("LspDiagnosticsVirtualTextHint", purple)
 
 -- dashboard
-fg("DashboardHeader",   colors.accent)
-fg("DashboardCenter",   colors.purple)
+fg("DashboardHeader",   colors.purple)
+fg("DashboardCenter",   colors.white)
 fg("DashboardShortcut", colors.white )
-fg("DashboardFooter",   colors.accent)
+fg("DashboardFooter",   colors.purple)
 
 -- WhichKey
 fg("WhichKeyDesc",  green)
 bg("WhichKeyFloat", normal_darker)
 
 -- basic
-bg("Normal",none)
+bg("Normal", colors.bg)
