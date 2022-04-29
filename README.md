@@ -20,7 +20,7 @@ I highly recommend to just remember one character after leader key and 'Whichkey
 | <leader> wK   | move window to max top                         |
 | <leader> wL   | move window to max right                       |
 
-## Window
+## Keymaps
 | key           | Action                                         |
 |---------------|------------------------------------------------|
 | <leader> ld   | go to declaration                              |
