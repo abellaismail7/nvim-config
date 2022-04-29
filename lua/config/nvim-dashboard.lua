@@ -6,16 +6,11 @@ local g = vim.g
 g.dashboard_disable_at_vimenter = 0
 g.dashboard_disable_statusline = 1
 g.dashboard_default_executive = "telescope"
-g.dashboard_custom_header = {
-[[ _  _  ____    _   _                 _            ]],
-[[| || ||___ \  | \ | | ___  _____   _(_)_ __ ___   ]],
-[[| || |_ __) | |  \| |/ _ \/ _ \ \ / / | '_ ` _ \  ]],
-[[|__   _/ __/  | |\  |  __/ (_) \ V /| | | | | | | ]],
-[[   |_||_____| |_| \_|\___|\___/ \_/ |_|_| |_| |_| ]],
-[[                                                  ]],
-
-}
-
+g.dashboard_preview_command = 'cat'
+g.dashboard_preview_pipeline = 'lolcat'
+g.dashboard_preview_file = "/home/bella/.config/nvim/logo"
+g.dashboard_preview_file_height = 12
+g.dashboard_preview_file_width = 60
 
 g.dashboard_custom_section = {
    a = { description = { "  Find File                 SPC f f" }, command = "Telescope find_files" },

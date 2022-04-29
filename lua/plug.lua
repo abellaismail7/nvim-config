@@ -140,12 +140,19 @@ return packer.startup(function()
     config = [[ require 'colorizer'.setup({'*'}, { mode = 'foreground' }) ]]
   }
   use 'kyazdani42/nvim-web-devicons'
-  use 'sheerun/vim-polyglot'
 
   use {
-    'glepnir/dashboard-nvim',
-    config = [[require"config.nvim-dashboard"]]
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
   }
+
+  --use {
+  --  'glepnir/dashboard-nvim',
+  --  config = [[require"config.nvim-dashboard"]]
+  --}
   use 'dracula/vim'
 
   -- 42

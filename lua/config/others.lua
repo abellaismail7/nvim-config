@@ -8,7 +8,7 @@ function M.blankline()
       filetype_exclude = {
          "help",
          "terminal",
-         "dashboard",
+         "alpha",
          "packer",
          "lspinfo",
          "TelescopePrompt",
