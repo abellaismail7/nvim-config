@@ -147,6 +147,17 @@ return packer.startup(function()
     config = [[ require'config.feline']]
   }
 
+  use {
+    "dstein64/vim-startuptime",
+    cmd = "StartupTime",
+  }
+
+  use {
+    "AndrewRadev/splitjoin.vim",
+    keys = { "gJ", "gS" },
+  }
+  use "machakann/vim-sandwich"
+
   -- Theme
   use {
     'norcalli/nvim-colorizer.lua',
@@ -157,9 +168,7 @@ return packer.startup(function()
   use {
     'goolord/alpha-nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
-    end
+    config = [[ require"config.alpha" ]]
   }
 
   --use {
