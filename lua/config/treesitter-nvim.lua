@@ -13,6 +13,14 @@ ts_config.setup {
         "go"
     },
     highlight = {
+		disable = function (lang, bufnr)
+			local filename = vim.api.nvim_buf_get_name(bufnr)
+			if filename == nil or filename == '' then
+				return vim.api.nvim_buf_line_count(bufnr) > 10000;
+			else
+				return (vim.fn.getfsize(filename) > 1000000)
+			end
+		end,
         enable = true,
         use_languagetree = true
     }
