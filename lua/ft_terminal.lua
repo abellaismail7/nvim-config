@@ -1,15 +1,18 @@
 local popup = require "plenary.popup"
 local api   = vim.api
+local M = {}
+
 local bufnr = -1
 local winnr = -1
-local M = {}
 local pop_opts = {
-    pos = "center",
+    pos = "botleft",
     focusable = true,
-    border = true,
-    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-    highlight = "Normal",
-    --borderhighlight = "",
+    border = false,
+    highlight = "Pmenu",
+	borderhighlight = "Pmenu",
+	col = 0,
+	padding = { 0, 0, 0, 0},
+	title = "42Terminal",
 }
 
 local function calc_size(opts)
@@ -17,22 +20,23 @@ local function calc_size(opts)
     if vim.o.laststatus ~= 0 then
         line_count = line_count - 1
     end
-    opts.width = math.floor(vim.o.columns * .7)
-    opts.minheight = math.floor(line_count * .5)
+    opts.width = vim.o.columns
+    opts.height = math.floor(line_count * .3)
+	opts.minheight = 15
     opts.maxheight = line_count - 3;
+	opts.line = line_count + 1
 end
 
 function M.open()
     if bufnr == -1 or not api.nvim_buf_is_valid(bufnr)
         then
         bufnr = api.nvim_create_buf(false, false)
-        api.nvim_buf_set_option(bufnr, "buflisted", false)
         api.nvim_buf_set_option(bufnr, "modified", false)
-
         api.nvim_buf_call(bufnr, function ()
             vim.cmd [[
                 edit term://zsh
-                nmap <silent> <buffer> <Esc> :lua require('ft_terminal').close()<cr>
+				set nobuflisted
+                nmap <silent> <buffer> <C-k> :lua require('ft_terminal').close()<cr>
             ]]
         end)
     end

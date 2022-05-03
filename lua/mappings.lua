@@ -77,7 +77,7 @@ map("n", ",s", [[ :Step<cr> ]])
 -----------
 
 -- Terminal
-map("n", "<leader>ot", require('ft_terminal').open)
+map("n", "<C-k>", require('ft_terminal').open)
 
 -------------
 --- buffers
