@@ -58,6 +58,11 @@ return packer.startup(function()
     config = [[require"lsp_signature".setup()]]
   }
 
+  use {
+	  'simrat39/rust-tools.nvim',
+	  config = [[require('rust-tools').setup({})]]
+  }
+
   -- completion
   use {
     'hrsh7th/nvim-cmp',
@@ -111,6 +116,10 @@ return packer.startup(function()
   }
   use "nvim-treesitter/playground"
 
+  use {
+	  'numToStr/Comment.nvim',
+	  config = [[require('Comment').setup()]]
+  }
   -- Web Trash
   use {
     "windwp/nvim-ts-autotag",
