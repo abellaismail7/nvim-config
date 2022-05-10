@@ -11,29 +11,38 @@ map("n", "<leader>wv", 		[[<C-w>v]])
 map("n", "<leader>ws", 		[[<C-w>s]])
 
 -- resize
-map("n", "<C-M-h>", 	[[<C-w><]])
-map("n", "<C-M-j>", 	[[<C-w>+]])
-map("n", "<C-M-k>", 	[[<C-w>-]])
-map("n", "<C-M-l>", 	[[<C-w>>]])
+map("n", "<C-M-Left>", 	[[<C-w><]])
+map("n", "<C-M-Down>", 	[[<C-w>+]])
+map("n", "<C-M-Up>", 	[[<C-w>-]])
+map("n", "<C-M-Right>", [[<C-w>>]])
 map("n", "<leader>w=",  [[<C-w>=]])
 
 -- maximizer
 map("n", "<leader>wm", [[:MaximizerToggle! <CR>]])
 
 -- navigation
-map("n", "<leader>wh", 		[[:wincmd h<cr>]])
-map("n", "<leader>wj", 		[[:wincmd j<cr>]])
-map("n", "<leader>wk", 		[[:wincmd k<cr>]])
-map("n", "<leader>wl", 		[[:wincmd l<cr>]])
+map("n", "<C-Left>", 		[[:wincmd h<cr>]])
+map("n", "<C-Down>", 		[[:wincmd j<cr>]])
+map("n", "<C-Up>",			[[:wincmd k<cr>]])
+map("n", "<C-Right>", 		[[:wincmd l<cr>]])
+
+-- buf navigation
+map("n", "<M-Left>",	[[<cmd>TablineBufferPrev<cr>]])
+map("n", "<M-Down>",	[[gt]])
+map("n", "<M-Up>",		[[gT]])
+map("n", "<M-Right>",	[[<cmd>TablineBufferNext<cr>]])
+map("n", "<M-t>",		[[<cmd>TablineTabNew<cr>]])
+map("n", "<M-r>",		[[:TablineTabRename ]])
+
 
 -- close
 map("n", "<leader>wc", 		[[<C-w>c]])
 
 -- switch split
-map("n", "<leader>wH", 		[[:wincmd H<cr>]])
-map("n", "<leader>wJ", 		[[:wincmd J<cr>]])
-map("n", "<leader>wK", 		[[:wincmd K<cr>]])
-map("n", "<leader>wL", 		[[:wincmd L<cr>]])
+map("n", "<C-S-Left>"	, 		[[:wincmd H<cr>]])
+map("n", "<C-S-Down>"	, 		[[:wincmd J<cr>]])
+map("n", "<C-S-Up>"	, 			[[:wincmd K<cr>]])
+map("n", "<C-S-Right>", 		[[:wincmd L<cr>]])
 
 --------------
 --- LSP ./config/nvim-lspconfig.lua
@@ -48,7 +57,7 @@ map("n", "<leader>wL", 		[[:wincmd L<cr>]])
 map("n", "<leader>ra", require('run.android').run)
 
 -- Make c
-map("n", "<leader>rmm", [[ :make ]])
+map("n", "<leader>m", 	[[ :make ]])
 map("n", "<leader>rmc", [[ :make clean ]])
 map("n", "<leader>rma", [[ :make fclean ]])
 map("n", "<leader>rmr", [[ :make fclean all ]])
@@ -94,7 +103,7 @@ map("n", "<leader>,", [[<Cmd>BufferLineCyclePrev<CR>]])
 -------------
 
 -- basics
-map("n", "<leader>ff", require('telescope.builtin').find_files)
+map({"n", "i"}, "<M-f>", 	   require('telescope.builtin').find_files)
 map("n", "<leader>fb", require('telescope.builtin').buffers)
 map("n", "<leader>fh", require('telescope.builtin').help_tags)
 map("n", "<leader>fm", require('telescope.builtin').marks)
@@ -110,6 +119,9 @@ map("n", "<leader>fg", require('telescope.builtin').git_files)
 --- ------------------------
 --- Other
 --- ------------------------
+
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- registers
 map("v", "p", 	[["_dP]])

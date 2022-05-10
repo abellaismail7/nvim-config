@@ -10,20 +10,19 @@ local on_attach = function(_, bufnr)
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
 
-	buf_set_keymap("n", "K", [[<cmd>lua vim.lsp.buf.hover()<cr>]], opts);
-	buf_set_keymap("n", "gd", [[<cmd>lua vim.lsp.buf.definition()<cr>]], opts) -- CTRL-t jump back
-	buf_set_keymap("n", "gt", [[<cmd>lua vim.lsp.buf.type_definition()<cr>]], opts)
-	buf_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<cr>]], opts)
+	vim.keymap.set("n", "K",	vim.lsp.buf.hover			, opts)
+	vim.keymap.set("n", "gd",	vim.lsp.buf.definition		, opts) -- CTRL-t jump back
+	vim.keymap.set("n", "gD",	vim.lsp.buf.declaration		, opts) -- CTRL-t jump back
+	vim.keymap.set("n", "gt",	vim.lsp.buf.type_definition	, opts)
+	vim.keymap.set("n", "gi",	vim.lsp.buf.implementation	, opts)
+	vim.keymap.set("n", "gr", 	vim.lsp.buf.references		, opts)
 
-	buf_set_keymap("n", "<leader>le",	[[<cmd>lua vim.lsp.diagnostic.open_float()<cr>]], opts)
-	buf_set_keymap("n", "<leader>ln",	[[<cmd>lua vim.diagnostic.goto_next()<cr>]], opts)
-	buf_set_keymap("n", "<leader>lp",	[[<cmd>lua vim.diagnostic.goto_prev()<cr>]], opts)
-
-	buf_set_keymap("n", "<leader>ld", 	[[<cmd>lua vim.lsp.buf.declaration()<cr>]], opts)
-	buf_set_keymap("n", "<leader>lrn", 	[[<cmd>lua vim.lsp.buf.rename()<cr>]], opts)
-	buf_set_keymap("n", "<leader>lre", 	[[<cmd>lua vim.lsp.buf.references()<cr>]], opts)
-	buf_set_keymap("n", "<leader>lf",	[[<cmd>lua vim.lsp.buf.formatting()<cr>]], opts)
-	buf_set_keymap("n", ",a",	[[<cmd>lua vim.lsp.buf.code_action()<cr>]], opts)
+	vim.keymap.set("n", "<leader>le",	vim.diagnostic.open_float	, opts)
+	vim.keymap.set("n", "<leader>ln",	vim.diagnostic.goto_next	, opts)
+	vim.keymap.set("n", "<leader>lp",	vim.diagnostic.goto_prev	, opts)
+	vim.keymap.set("n", "<leader>lr", 	vim.lsp.buf.rename			, opts)
+	vim.keymap.set("n", "<leader>lf",	vim.lsp.buf.formatting		, opts)
+	vim.keymap.set("n", ",a",			vim.lsp.buf.code_action		, opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
