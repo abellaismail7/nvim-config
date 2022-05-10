@@ -146,7 +146,7 @@ return packer.startup(function()
 
   -- lines
   use {
-    'akinsho/nvim-bufferline.lua',
+    'kdheepak/tabline.nvim',
     config = [[require'config.nvim-bufferline']],
     requires = 'kyazdani42/nvim-web-devicons'
   }
