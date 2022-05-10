@@ -19,7 +19,6 @@ end
 --local dark_bg2  = "#2e3133"
 --local light_bg  = "#292F36"
 
-local none          = colors.none
 local white         = colors.white
 local black         = colors.black
 local one_bg2       = colors.one_bg2
@@ -41,6 +40,7 @@ fg("Keyword",           yellow)
 fg("Conditional",       yellow)
 fg("Repeat",            yellow)
 fg("Operator",          yellow)
+fg("Include",			colors.accent)
 
 fg("String",            str_green)
 fg("Delimiter",         lred)
@@ -82,15 +82,21 @@ fg("CmpItemAbbr",  grey_fg)
 fg("CmpItemMenu",  grey_fg)
 
 -- git signs ---
-fg_bg("DiffAdd", colors.str_green, colors.bg)
-fg_bg("DiffChange", colors.yellow, colors.bg)
-fg_bg("DiffDelete", colors.lred, colors.bg)
+fg_bg("DiffAdd", colors.str_green, "none")
+fg_bg("DiffChange", colors.yellow, "none")
+fg_bg("DiffDelete", colors.lred,   "none")
 
 -- NvimTree
 fg("NvimTreeFolderIcon",    blue)
 fg("NvimTreeFolderName",    blue)
 fg("NvimTreeIndentMarker",  one_bg2)
 fg_bg("NvimTreeVertSplit",  normal_darker, normal_darker)
+
+-- tabline
+fg_bg("TablineActive",	colors.black, colors.accent)
+vim.cmd([[
+	hi! link tabline_a_normal TablineActive
+]])
 
 fg("NvimTreeRootFolder",        white)
 bg("NvimTreeNormal",            normal_darker)
@@ -117,12 +123,6 @@ fg("LspDiagnosticsVirtualTextInformation",  green)
 -- hint
 fg("LspDiagnosticsSignHint",        purple)
 fg("LspDiagnosticsVirtualTextHint", purple)
-
--- dashboard
-fg("DashboardHeader",   colors.purple)
-fg("DashboardCenter",   colors.white)
-fg("DashboardShortcut", colors.white )
-fg("DashboardFooter",   colors.purple)
 
 -- WhichKey
 fg("WhichKeyDesc",  green)
