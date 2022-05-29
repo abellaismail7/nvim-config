@@ -122,6 +122,9 @@ return packer.startup(function()
   }
   -- Web Trash
   use {
+	  'mattn/emmet-vim'
+  }
+  use {
     "windwp/nvim-ts-autotag",
     config = [[require('nvim-ts-autotag').setup()]]
   }
@@ -147,12 +150,12 @@ return packer.startup(function()
   -- lines
   use {
     'kdheepak/tabline.nvim',
-    config = [[require'config.nvim-bufferline']],
+    config = [[require'config.tabline']],
     requires = 'kyazdani42/nvim-web-devicons'
   }
 
   use {
-    'famiu/feline.nvim',
+    'feline-nvim/feline.nvim',
     config = [[ require'config.feline']]
   }
 

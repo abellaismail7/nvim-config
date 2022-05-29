@@ -50,6 +50,7 @@ fg("Identifier",        dark_green)
 
 fg("Comment",           grey)
 bg("Search",            lred)
+fg("DraculaPink", "#88C0D0")
 
 fg("NvimInternalError", lred)
 

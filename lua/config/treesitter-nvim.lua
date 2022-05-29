@@ -22,5 +22,8 @@ ts_config.setup {
 			end
 		end,
         enable = true,
-    }
+    },
+	autotag = {
+    	enable = true,
+  	},
 }
