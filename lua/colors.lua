@@ -21,5 +21,5 @@ return {
     red           = "#FF6E6E",
     grey          = "#6272A4",
     grey_fg       = "#F8F8F2",
-    accent        = "#D183E8",
+    accent        = "#81A1C1",
 }

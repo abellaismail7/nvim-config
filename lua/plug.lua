@@ -178,18 +178,21 @@ return packer.startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   use {
-    'goolord/alpha-nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = [[ require"config.alpha" ]]
+	'arcticicestudio/nord-vim',
+	config = [[ vim.schedule(require"highlights".setup)]],
+  }
+  use {
+	'dracula/vim',
+	--config = [[ vim.schedule(require"highlights".setup)]],
   }
 
-  --use {
-  --  'glepnir/dashboard-nvim',
-  --  config = [[require"config.nvim-dashboard"]]
-  --}
-  use 'dracula/vim'
-
   -- 42
-  use 'abellaismail7/42header.nvim'
-  use '42Paris/42header'
+  use {
+	  'abellaismail7/42header.nvim',
+	  ft = {"c", "cpp"}
+  }
+  use {
+	  '42Paris/42header',
+	  ft = {"c", "cpp"}
+  }
 end)

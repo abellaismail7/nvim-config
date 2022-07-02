@@ -33,11 +33,10 @@ vim.api.nvim_set_option("expandtab", false)
 
 vim.cmd("set fillchars=eob:\\ ")
 vim.cmd('let mapleader = " "')
-vim.cmd("colo dracula")
+vim.cmd("colo nord")
 vim.cmd("syntax on")
 vim.cmd("set listchars +=eol:↴")
 vim.g.termdebug_disasm_window = 10
 vim.g.termdebug_wide = 1
 
-require"highlights"
 require"mappings"
