@@ -65,22 +65,6 @@ map("n", "<leader>rmr", [[ :make fclean all ]])
 -- Norm
 map("n", "<leader>rn", [[ :! norminette % ]])
 
---------------
---- Debug
---------------
-
-map("n", "<leader>dr", require'run.debug'.run)
-map("n", "<leader>d=", require'run.debug'.resize)
-map("n", "<leader>dg", [[ :Gdb<cr> ]])
-map("n", "<leader>dp", [[ :Program<cr> ]])
-map("n", "<leader>ds", [[ :Source<cr> ]])
-map("n", "<leader>da", [[ :Asm<cr> ]])
-map("n", "<leader>db", [[ :Break<cr> ]])
-map("n", "<leader>dl", [[ :Clear<cr> ]])
-map("n", ",c", [[ :Continue<cr> ]])
-map("n", ",n", [[ :Over<cr> ]])
-map("n", ",s", [[ :Step<cr> ]])
-
 -----------
 --- Open
 -----------

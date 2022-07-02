@@ -146,7 +146,6 @@ local function mru(start, cwd, items_number, opts)
     local tbl = {}
     for i, fn in ipairs(oldfiles) do
         local short_fn
-		print(fn)
         if cwd then
             short_fn = fnamemodify(fn, ":.")
         else

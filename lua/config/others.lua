@@ -20,4 +20,16 @@ function M.blankline()
    }
 end
 
+function M.lsp_signature()
+	require "lsp_signature".setup({
+		bind = false,
+		floating_window = false,
+		transparency = 10,
+    	handler_opts = {
+    		border = "single"
+    	},
+		toggle_key = '<M-x>',
+  	})
+end
+
 return M
