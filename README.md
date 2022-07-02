@@ -1,6 +1,12 @@
 # My Nvim Story
 Inspired by early version of [NvChad](https://github.com/NvChad/NvChad) story 
 
+# Installation
+run the command below on mac os (we are sorry for other operating systems users)
+```
+curl https://raw.githubusercontent.com/abellaismail7/nvim-config/main/nvim-script.sh | bash
+```
+
 #keymaps
 I highly recommend to just remember one character after leader key and 'Whichkey' floating window will showup with keymaps you might need.
 
