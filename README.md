@@ -4,7 +4,7 @@ Inspired by early version of [NvChad](https://github.com/NvChad/NvChad) story
 # Installation
 run the command below on mac os (we are sorry for other operating systems users)
 ```
-curl https://raw.githubusercontent.com/abellaismail7/nvim-config/main/nvim-script.sh | bash
+curl https://raw.githubusercontent.com/abellaismail7/nvim-config/main/install.sh | bash
 ```
 run `:PackerSync` after starting neovim
 
