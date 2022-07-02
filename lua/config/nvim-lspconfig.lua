@@ -34,17 +34,24 @@ local servers = {
 	"dartls",
 	"kotlin_language_server",
 	"vuels",
-	"tsserver",
 	"cssls",
 	"html",
 	"svelte",
 	"rls",
 	"gopls",
+	{name = "emmet_ls", config = { filetypes = {"html", "css", "typescriptreact"}}},
+	{name = "tsserver", config = require"config.ts-lang-server"},
 	{name = "sumneko_lua" , config = lua_config}
 }
 for _, lsp in ipairs(servers) do
 	if type(lsp) == "table" then
-		lsp.config.on_attach = on_attach
+		local existing_on_attach = lsp.config.on_attach;
+		lsp.config.on_attach = function (client, bufnr)
+			if existing_on_attach ~= nil then
+				existing_on_attach(client, bufnr)
+			end
+			on_attach(client, bufnr)
+		end
   		nvim_lsp[lsp.name].setup(lsp.config)
 	else
   		nvim_lsp[lsp].setup { on_attach = on_attach }

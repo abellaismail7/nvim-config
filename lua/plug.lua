@@ -114,19 +114,26 @@ return packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     config = [[require "config.treesitter-nvim"]]
   }
+
   use "nvim-treesitter/playground"
 
   use {
-	  'numToStr/Comment.nvim',
-	  config = [[require('Comment').setup()]]
+    'numToStr/Comment.nvim',
+    config = [[require('Comment').setup()]]
   }
+
   -- Web Trash
   use {
-	  'mattn/emmet-vim'
+	  "jose-elias-alvarez/nvim-lsp-ts-utils",
+	  ft = {"typescript", "typescriptreact"},
   }
   use {
     "windwp/nvim-ts-autotag",
-    config = [[require('nvim-ts-autotag').setup()]]
+	ft = {"typescript", "typescriptreact"},
+	wants = "nvim-treesitter",
+    config = function()
+      require("nvim-ts-autotag").setup { enable = true }
+    end,
   }
 
   -- Help please
