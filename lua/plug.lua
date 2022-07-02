@@ -8,19 +8,12 @@ return packer.startup(function()
   use {
     'lewis6991/impatient.nvim',
     config = [[ require('impatient') ]]
-
   }
   -- dependency for nvim plugins
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
-  use 'szw/vim-maximizer'
 
   -- snippet support
-  use {
-    "windwp/nvim-autopairs",
-    config = [[require('nvim-autopairs').setup{}]]
-  }
-
   use {
      "rafamadriz/friendly-snippets",
      event = "InsertEnter",
@@ -37,12 +30,6 @@ return packer.startup(function()
 
   use "tpope/vim-fugitive"
 
-  -- Debugging
-  use {
-    'puremourning/vimspector',
-    config = [[require"config.vimspector"]]
-  }
-
   -- LSP
   use {
     'neovim/nvim-lspconfig',
@@ -50,18 +37,42 @@ return packer.startup(function()
       require "config.nvim-lspconfig"
     end
   }
+  use {
+	  'j-hui/fidget.nvim',
+	  config = [[require"fidget".setup({text = {spinner = "dots_pulse", done = ""}})]]
+  }
 
   use 'tjdevries/nlua.nvim'
   use 'tjdevries/lsp_extensions.nvim'
   use {
     "ray-x/lsp_signature.nvim",
-    config = [[require"lsp_signature".setup()]]
+    config = [[require"config.others".lsp_signature()]]
+  }
+  use {
+	  "jose-elias-alvarez/null-ls.nvim",
+	  config = [[ require'config.null-ls' ]],
   }
 
   use {
 	  'simrat39/rust-tools.nvim',
+	  ft = {'rust'},
 	  config = [[require('rust-tools').setup({})]]
   }
+
+  use {
+	  'mfussenegger/nvim-jdtls',
+	  ft = {'java'},
+	  config = [[ require'config.lsp_java' ]],
+  }
+
+  -- debug
+  use {
+	  'mfussenegger/nvim-dap',
+	  wants = {},
+	  config= [[require'config.dap']]
+  }
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
 
   -- completion
   use {
@@ -103,6 +114,7 @@ return packer.startup(function()
 	"hrsh7th/cmp-path",
 	after = "cmp-buffer",
   }
+
   -- FZF
   use{
     'nvim-telescope/telescope.nvim',
@@ -141,17 +153,12 @@ return packer.startup(function()
     "folke/which-key.nvim",
     config = [[require "config.whichkey"]]
   }
+
   use {
     'kyazdani42/nvim-tree.lua',
     opt = true,
     keys = "<leader>n",
     config = [[require('config.nvimtree')]]
-  }
-  use {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-         require("config.others").blankline()
-    end,
   }
 
   -- lines
@@ -162,10 +169,22 @@ return packer.startup(function()
   }
 
   use {
+	"tiagovla/scope.nvim",
+	config = [[ require("scope").setup() ]],
+  }
+
+  use {
     'feline-nvim/feline.nvim',
     config = [[ require'config.feline']]
   }
 
+  -- utils
+  use {
+    "windwp/nvim-autopairs",
+    config = [[require('nvim-autopairs').setup{}]]
+  }
+
+  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
   use {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
@@ -177,7 +196,20 @@ return packer.startup(function()
   }
   use "machakann/vim-sandwich"
 
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = [[ require"config.alpha" ]]
+  }
+
   -- Theme
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+         require("config.others").blankline()
+    end,
+  }
+
   use {
     'norcalli/nvim-colorizer.lua',
     config = [[ require 'colorizer'.setup({'*'}, { mode = 'foreground' }) ]]
