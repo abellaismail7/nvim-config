@@ -127,6 +127,7 @@ return packer.startup(function()
     config = [[require "config.treesitter-nvim"]]
   }
 
+  use 'RRethy/nvim-treesitter-textsubjects'
   use "nvim-treesitter/playground"
 
   use {
