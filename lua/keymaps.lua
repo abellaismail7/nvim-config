@@ -18,7 +18,7 @@ map("n", "<C-M-Right>", [[<C-w>>]])
 map("n", "<leader>w=",  [[<C-w>=]])
 
 -- maximizer
-map("n", "<leader>wm", [[:MaximizerToggle! <CR>]])
+map("n", "<leader>wm", [[<C-w>|]])
 
 -- navigation
 map("n", "<C-Left>", 		[[:wincmd h<cr>]])
@@ -75,30 +75,32 @@ map("n", "<C-k>", require('ft_terminal').open)
 -------------
 --- buffers
 -------------
-map("n", "<leader>bc", [[<Cmd>bd | bp<CR>]]) -- close buffer
+map("n", "<leader>bc", [[<Cmd>bp|bd #<CR>]]) -- close buffer
 map("n", "<leader>bs", [[:w]]) -- save buffer
-
--- BufferLine
-map("n", "<leader>.", [[<Cmd>BufferLineCycleNext<CR>]])
-map("n", "<leader>,", [[<Cmd>BufferLineCyclePrev<CR>]])
 
 -------------
 -- telescope
 -------------
 
 -- basics
-map({"n", "i"}, "<M-f>", 	   require('telescope.builtin').find_files)
-map("n", "<leader>fb", require('telescope.builtin').buffers)
-map("n", "<leader>fh", require('telescope.builtin').help_tags)
-map("n", "<leader>fm", require('telescope.builtin').marks)
-map("n", "<leader>fs", [[:lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>]])
-map("n", "<leader>fw", [[:lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>]])
+map({"n", "i"}, "<M-f>",	require('telescope.builtin').find_files)
+map("n", "<leader>fb", 		require('telescope.builtin').buffers)
+map("n", "<leader>fh", 		require('telescope.builtin').help_tags)
+map("n", "<leader>fm", 		require('telescope.builtin').marks)
+map("n", "<leader>fg",		require('telescope.builtin').git_files)
+map("n", "<leader>fs", 		function ()
+	require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})
+end)
+map("n", "<leader>fw", 		function ()
+	require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
+end)
 
 -- android
-map("n", "<Leader>fa", [[:lua require('telescope.builtin').find_files({cwd="app/src/main",path_display={'tail'}})<CR>]])
+map("n", "<Leader>fa", 		function ()
+	require('telescope.builtin').find_files({cwd="app/src/main",path_display={'tail'}})
+end)
 
 -- git
-map("n", "<leader>fg", require('telescope.builtin').git_files)
 
 --- ------------------------
 --- Other

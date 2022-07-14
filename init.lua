@@ -39,5 +39,5 @@ vim.cmd("set listchars +=eol:↴")
 vim.g.termdebug_disasm_window = 10
 vim.g.termdebug_wide = 1
 
-require"mappings"
+require"keymaps"
 require"auto_cmd"
