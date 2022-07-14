@@ -1,10 +1,8 @@
 local ls = require("luasnip")
-local cppsnips = require("snip.cpp")
 local csnips = require("snip.c")
 
 
 ls.snippets = {
-   cpp = cppsnips,
    c = csnips,
 }
 
