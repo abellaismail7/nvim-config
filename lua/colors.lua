@@ -1,9 +1,9 @@
 
 return {
     none          = "none",
-    bg            = "#1E222A",
+    bg            = "#181C25",
     white         = "#FFFFFF",
-    black         = "#000000",
+    black         = "#12171F",
     one_bg2       = "#282A36",
     normal_darker = "#101217",
     darker_bg     = "#1E2029",
