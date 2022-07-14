@@ -40,3 +40,4 @@ vim.g.termdebug_disasm_window = 10
 vim.g.termdebug_wide = 1
 
 require"mappings"
+require"auto_cmd"
