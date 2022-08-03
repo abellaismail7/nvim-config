@@ -18,7 +18,9 @@ dap.configurations.cpp = {
     end,
     cwd = '${workspaceFolder}',
     stopOnEntry = false,
-    args = {},
+    args = function()
+      return vim.split(vim.fn.input('Arguments:', '' , 'file'), " ")
+    end,
 
     -- 💀
     -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
