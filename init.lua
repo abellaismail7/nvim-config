@@ -3,7 +3,7 @@ require "unplug"
 require "plug"
 
 vim.wo.numberwidth = 2
-vim.wo.number = true
+vim.wo.relativenumber = true
 
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.termguicolors = true
