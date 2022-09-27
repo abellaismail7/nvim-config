@@ -1,6 +1,5 @@
 local colors = require("colors")
 
-
 local hi = vim.api.nvim_set_hl
 hi(0, "Normal",			{})
 hi(0, "DiffChange",		{})

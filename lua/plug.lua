@@ -218,12 +218,10 @@ return packer.startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   use {
-	'arcticicestudio/nord-vim',
+	--'arcticicestudio/nord-vim',
+	'ellisonleao/gruvbox.nvim',
+	--'PHSix/nvim-hybrid',
 	config = [[ vim.schedule(require"highlights".setup)]],
-  }
-  use {
-	'dracula/vim',
-	--config = [[ vim.schedule(require"highlights".setup)]],
   }
 
   -- 42
