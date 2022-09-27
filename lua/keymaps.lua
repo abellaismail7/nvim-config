@@ -116,6 +116,11 @@ map("n", "<leader>y", 	[["+y]])
 map("v", "<leader>y", 	[["+y]])
 map("n", "<leader>Y", 	[["+Y]])
 
+-- map("", "<Up>", "<Nop>")
+-- map("", "<Down>", "<Nop>")
+-- map("", "<Right>", "<Nop>")
+-- map("", "<Left>", "<Nop>")
+
 map("n", "<leader>i", 	[[p<C-a>Y]] )
 
 -- terminal
