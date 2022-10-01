@@ -1,17 +1,6 @@
 local colors = require"colors"
 local vi_colors = require('feline.providers.vi_mode')
 
--- Initialize the components table
-local components = {
-   active = {},
-   inactive = {},
-}
-
--- Initialize left, and right
-table.insert(components.active, {})
-table.insert(components.active, {})
-table.insert(components.inactive, {})
-
 local comps = {}
 
 comps.bar = {
@@ -38,18 +27,31 @@ comps.fileinfo = {
     }
 }
 
+comps.fileinfo_middle = {
+	provider = {
+		name = "file_info",
+		opts = {
+			type = "relative",
+		},
+	},
+	hl = {
+		style = "bold",
+	},
+	left_sep = " ",
+	right_sep = " ",
+}
+
 comps.scroll = {
     provider = function()
-        local current_line = vim.fn.line(".")
+		local current_line = vim.fn.line(".")
         local total_line = vim.fn.line("$")
 
         if current_line == 1 then
-            return "   Top  "
-        elseif current_line == vim.fn.line("$") then
-            return "   Bot  "
+            return " [Top]"
+        elseif current_line == total_line then
+            return " [Bot]"
         end
-        local result, _ = math.modf((current_line / total_line) * 100)
-        return "   " .. result .. "%  "
+        return " [" .. current_line .. "]"
     end,
 }
 
@@ -104,35 +106,47 @@ comps.git_branch = {
     end,
 }
 
--- useless bar
-table.insert(components.active[1], comps.bar)
-table.insert(components.inactive[1], comps.bar)
+local left = {
+	-- useless bar
+	comps.bar,
+	
+	-- vi mode
+	comps.vmode,
+		
+	-- fileicon + name
+	-- comps.fileinfo,
+	
+	-- scroll indicator
+	comps.scroll,
+		
+	-- git diffs
+	comps.gitadd,
+	comps.gitchange,
+	comps.gitremove,
+	
+	-- reset background
+	comps.reset,
+	
+}
 
--- vi mode
-table.insert(components.active[1], comps.vmode)
-table.insert(components.inactive[1], comps.vmode)
+local middle ={
+	comps.fileinfo_middle,
+}
 
--- fileicon + name
-table.insert(components.active[1], comps.fileinfo)
-table.insert(components.inactive[1], comps.fileinfo)
+local right = {
+	-- lsp
+	comps.lsp_is_active,
+		
+	-- current branch
+	comps.git_branch,
+}
 
--- scroll indicator
-table.insert(components.active[1], comps.scroll)
+-- Initialize the components table
+local components = {
+   active = {left, middle ,right},
+   inactive = {},
+}
 
--- git diffs
-table.insert(components.active[1], comps.gitadd)
-table.insert(components.active[1], comps.gitchange)
-table.insert(components.active[1], comps.gitremove)
-
--- reset background
-table.insert(components.active[1], comps.reset)
-table.insert(components.inactive[1], comps.reset)
-
--- lsp
-table.insert(components.active[2], comps.lsp_is_active)
-
--- current branch
-table.insert(components.active[2], comps.git_branch)
 
 require'feline'.setup {
     components = components,
