@@ -9,19 +9,22 @@ local on_attach = function(_, bufnr)
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
 
-	vim.keymap.set("n", "K",	vim.lsp.buf.hover			, opts)
-	vim.keymap.set("n", "gd",	vim.lsp.buf.definition		, opts) -- CTRL-t jump back
-	vim.keymap.set("n", "gD",	vim.lsp.buf.declaration		, opts) -- CTRL-t jump back
-	vim.keymap.set("n", "gt",	vim.lsp.buf.type_definition	, opts)
-	vim.keymap.set("n", "gi",	vim.lsp.buf.implementation	, opts)
-	vim.keymap.set("n", "gr", 	vim.lsp.buf.references		, opts)
+	vim.keymap.set("n", "K",	vim.lsp.buf.hover			, { desc = "lsp hover"})
+	vim.keymap.set("n", "gd",	vim.lsp.buf.definition		, { desc = "lsp definition"}) -- CTRL-t jump back
+	vim.keymap.set("n", "gD",	vim.lsp.buf.declaration		, { desc = "lsp declaration"}) -- CTRL-t jump back
+	vim.keymap.set("n", "gt",	vim.lsp.buf.type_definition	, { desc = "lsp type definition"})
+	vim.keymap.set("n", "gi",	vim.lsp.buf.implementation	, { desc = "lsp implementation"})
+	vim.keymap.set("n", "gr", 	vim.lsp.buf.references		, { desc = "lsp references"})
 
-	vim.keymap.set("n", "<leader>le",	vim.diagnostic.open_float	, opts)
-	vim.keymap.set("n", "<leader>ln",	vim.diagnostic.goto_next	, opts)
-	vim.keymap.set("n", "<leader>lp",	vim.diagnostic.goto_prev	, opts)
-	vim.keymap.set("n", "<leader>lr", 	vim.lsp.buf.rename			, opts)
-	vim.keymap.set("n", "<leader>lf",	vim.lsp.buf.formatting		, opts)
-	vim.keymap.set("n", ",a",			vim.lsp.buf.code_action		, opts)
+	vim.keymap.set("n", "<leader>le",	vim.diagnostic.open_float			, { desc = "lsp floating diagnostic"})
+	vim.keymap.set("n", "<leader>ln",	vim.diagnostic.goto_next			, { desc = "lsp next diagnostic"})
+	vim.keymap.set("n", "<leader>lp",	vim.diagnostic.goto_prev			, { desc = "lsp prev diagnostic"})
+	vim.keymap.set("n", "<leader>lr", 	vim.lsp.buf.rename					, { desc = "lsp rename"})
+	vim.keymap.set("n", "<leader>lf",	vim.lsp.buf.formatting				, { desc = "lsp format"})
+	vim.keymap.set("n", "<leader>lwa",	vim.lsp.buf.add_workspace_folder 	, { desc = "lsp format"})
+	vim.keymap.set("n", "<leader>lwr",	vim.lsp.buf.remove_workspace_folder	, { desc = "lsp format"})
+	vim.keymap.set("n", "<leader>lwl",	vim.lsp.buf.list_workspace_folders	, { desc = "lsp format"})
+	vim.keymap.set("n", ",a",			vim.lsp.buf.code_action				, { desc = "lsp code actions"})
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
