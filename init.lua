@@ -33,7 +33,9 @@ vim.api.nvim_set_option("expandtab", false)
 
 vim.cmd("set fillchars=eob:\\ ")
 vim.cmd('let mapleader = " "')
-vim.cmd("colo gruvbox")
+--vim.cmd("colo gruvbox")
+local base16 = require 'base16'
+base16(base16.themes['tomorrow-night'], true)
 vim.cmd("syntax on")
 vim.cmd("set listchars +=eol:↴")
 vim.g.termdebug_disasm_window = 10

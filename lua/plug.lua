@@ -37,6 +37,7 @@ return packer.startup(function()
       require "config.nvim-lspconfig"
     end
   }
+
   use {
 	  'j-hui/fidget.nvim',
 	  config = [[require"fidget".setup({text = {spinner = "dots_pulse", done = ""}})]]
@@ -219,7 +220,8 @@ return packer.startup(function()
 
   use {
 	--'arcticicestudio/nord-vim',
-	'ellisonleao/gruvbox.nvim',
+	--'ellisonleao/gruvbox.nvim',
+	"norcalli/nvim-base16.lua",
 	--'PHSix/nvim-hybrid',
 	config = [[ vim.schedule(require"highlights".setup)]],
   }
