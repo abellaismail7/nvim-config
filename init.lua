@@ -1,4 +1,4 @@
-vim.cmd('cd %:p:h')
+vim.api.nvim_set_current_dir(vim.fn.expand("%:p:h"))
 require "unplug"
 require "plug"
 
