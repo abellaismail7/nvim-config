@@ -1,7 +1,7 @@
-
 local api = vim.api
+local autocmd = api.nvim_create_autocmd
 
-api.nvim_create_autocmd("BufEnter", {
+autocmd("BufEnter", {
 	pattern = {"*.h", "*.hpp"},
 	callback = function ()
 		if (api.nvim_buf_line_count(0) == 1
@@ -21,4 +21,23 @@ api.nvim_create_autocmd("BufEnter", {
 		end
 	end
 })
+
+-- dont list quickfix buffers
+autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.opt_local.buflisted = false
+  end,
+})
+
+
+local packer_exists, packer = pcall(require, "packer")
+
+if not packer_exists
+then
+	vim.cmd":! git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+	packer.sync()
+end
+
 
