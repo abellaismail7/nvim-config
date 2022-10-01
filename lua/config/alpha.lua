@@ -245,3 +245,12 @@ local config = {
 }
 
 require"alpha".setup(config)
+
+vim.api.nvim_create_autocmd("VimEnter",{
+	callback = function ()
+		if vim.fn.isdirectory(vim.fn.expand("%")) == 1
+		then
+			require"alpha".start(false)
+		end
+	end
+})
