@@ -39,6 +39,7 @@ local servers = {
 	"svelte",
 	"rls",
 	"gopls",
+	"jdtls",
 	{name = "emmet_ls", config = { filetypes = {"html", "css", "typescriptreact"}}},
 	{name = "tsserver", config = require"config.ts-lang-server"},
 	{name = "sumneko_lua" , config = lua_config}
