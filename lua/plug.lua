@@ -218,14 +218,6 @@ return packer.startup(function()
   }
   use 'kyazdani42/nvim-web-devicons'
 
-  use {
-	--'arcticicestudio/nord-vim',
-	--'ellisonleao/gruvbox.nvim',
-	"norcalli/nvim-base16.lua",
-	--'PHSix/nvim-hybrid',
-	config = [[ vim.schedule(require"highlights".setup)]],
-  }
-
   -- 42
   use {
 	  'abellaismail7/42header.nvim',

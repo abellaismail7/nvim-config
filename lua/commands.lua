@@ -92,21 +92,3 @@ end
 api.nvim_create_user_command("CppClass", function (_, _, _)
 	CreateCppClass()
 end, {bang = true, desc = 'Create an ortodox canonical class'})
-
-
-local base16 =  require('base16')
-local theme_names = base16.theme_names()
-local base16_position = 100
-local hi = vim.api.nvim_set_hl
-print(#theme_names)
-local function cycle_theme()
-  base16_position = (base16_position % #theme_names) + 1
-  print(theme_names[base16_position], base16_position % #theme_names)
-  base16(base16.themes[theme_names[base16_position]], true)
-	hi(0, "Normal", {bg = "#181C25"})
-end
-
-api.nvim_create_user_command("Cycle", function (_, _, _)
-	cycle_theme()
-end, {bang = true, desc = 'Create an ortodox canonical class'})
-vim.keymap.set("n", "<leader>h", cycle_theme)
