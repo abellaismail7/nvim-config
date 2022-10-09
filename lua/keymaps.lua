@@ -84,6 +84,7 @@ map("n", "<leader>bs", [[:w]]) -- save buffer
 
 -- basics
 map({"n", "i"}, "<M-f>",	require('telescope.builtin').find_files)
+map({"n", "i"}, "<M-h>",	":Thm<CR>")
 map("n", "<leader>fb", 		require('telescope.builtin').buffers)
 map("n", "<leader>fh", 		require('telescope.builtin').help_tags)
 map("n", "<leader>fm", 		require('telescope.builtin').marks)

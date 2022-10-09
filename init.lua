@@ -27,6 +27,7 @@ vim.api.nvim_set_option("wildoptions", "pum")
 vim.api.nvim_set_option("pumblend", 5)
 vim.api.nvim_set_option("laststatus", 3)
 vim.api.nvim_set_option("wildmode", "longest:full,full")
+vim.api.nvim_set_option("mouse", "")
 
 -- indent
 vim.api.nvim_set_option("autoindent",true)
