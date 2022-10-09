@@ -2,13 +2,13 @@ local M = {}
 
 
 M.ui = {
-		-- hl = highlights
-		theme = "onedark",
-  		hl_add = {},
-  		hl_override = {},
-  		changed_themes = {},
-  		theme_toggle = { "ayu-dark", "one_light" },
-  		transparency = false,
+	-- hl = highlights
+	theme = "onedark",
+  	hl_add = {},
+  	hl_override = {},
+  	changed_themes = {},
+  	theme_toggle = { "ayu-dark", "one_light" },
+  	transparency = false,
 }
 
 
@@ -83,7 +83,6 @@ function M.change_theme(theme)
 	vim.g.terminal_color_13 = colors.base0E
 	vim.g.terminal_color_14 = colors.base0C
 	vim.g.terminal_color_15 = colors.base07
-
 
 end
 
