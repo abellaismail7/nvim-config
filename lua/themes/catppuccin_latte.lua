@@ -67,6 +67,6 @@ M.polish_hl = {
   TSProperty = { fg = M.base_30.teal },
 }
 
-M = require("base46").override_theme(M, "catppuccin_latte")
+M = require("theme").override_theme(M, "catppuccin_latte")
 
 return M

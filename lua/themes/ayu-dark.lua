@@ -61,7 +61,7 @@ M.polish_hl = {
   TSTagAttribute = { fg = M.base_30.orange },
 }
 
-M = require("base46").override_theme(M, "ayu-dark")
+M = require("theme").override_theme(M, "ayu-dark")
 
 vim.opt.bg = "dark"
 

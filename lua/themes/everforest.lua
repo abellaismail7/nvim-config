@@ -59,6 +59,6 @@ M.polish_hl = {
   TSTagDelimiter = { fg = M.base_30.green },
 }
 
-M = require("base46").override_theme(M, "everforest")
+M = require("theme").override_theme(M, "everforest")
 
 return M

@@ -63,7 +63,7 @@ M.polish_hl = {
   St_pos_text = { fg = M.base_30.white },
 }
 
-M = require("base46").override_theme(M, "onenord_light")
+M = require("theme").override_theme(M, "onenord_light")
 
 vim.opt.bg = "light"
 

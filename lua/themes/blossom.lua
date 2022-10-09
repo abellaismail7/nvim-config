@@ -67,6 +67,6 @@ M.polish_hl = {
 
 vim.opt.bg = "light"
 
-M = require("base46").override_theme(M, "blossom")
+M = require("theme").override_theme(M, "blossom")
 
 return M
