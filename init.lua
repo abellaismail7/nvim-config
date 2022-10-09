@@ -5,6 +5,7 @@ require "plug"
 vim.wo.numberwidth = 2
 vim.wo.relativenumber = true
 
+vim.g.ft_theme = "chadracula"
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.termguicolors = true
 vim.o.timeoutlen = 1000
@@ -14,6 +15,7 @@ vim.o.tabstop = 4
 vim.o.breakindent = true
 vim.opt.undofile = true
 vim.wo.signcolumn = 'number'
+vim.o.cmdheight = 0
 
 vim.api.nvim_set_option("backspace", "indent,eol,start")
 vim.api.nvim_set_option("arabicshape", true)
@@ -33,9 +35,11 @@ vim.api.nvim_set_option("expandtab", false)
 
 vim.cmd("set fillchars=eob:\\ ")
 vim.cmd('let mapleader = " "')
---vim.cmd("colo gruvbox")
-local base16 = require 'base16'
-base16(base16.themes['tomorrow-night'], true)
+
+local th = require("theme")
+th.change_theme(vim.g.ft_theme);
+
+
 vim.cmd("syntax on")
 vim.cmd("set listchars +=eol:↴")
 vim.g.termdebug_disasm_window = 10
