@@ -5,7 +5,7 @@ require "plug"
 vim.wo.numberwidth = 2
 vim.wo.relativenumber = true
 
-vim.g.ft_theme = "one_dark"
+vim.g.ft_theme = "chadracula"
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.termguicolors = true
 vim.o.timeoutlen = 1000
@@ -37,7 +37,7 @@ vim.cmd("set fillchars=eob:\\ ")
 vim.cmd('let mapleader = " "')
 
 local th = require("theme")
-th.change_theme("onedark");
+th.change_theme(vim.g.ft_theme);
 
 
 vim.cmd("syntax on")

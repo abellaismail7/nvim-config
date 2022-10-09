@@ -1,10 +1,28 @@
+local colors = require "colors"
 local M = {}
 
 
 M.ui = {
 	-- hl = highlights
   	hl_add = {},
-  	hl_override = {},
+  	hl_override = {
+		Keyword = 		   { fg = colors.yellow },
+		Conditional =      { fg = colors.yellow },
+		Repeat =           { fg = colors.yellow },
+		Operator =         { fg = colors.yellow },
+		Include	=		   { fg = colors.accent },
+		String =           { fg = colors.str_green },
+		Delimiter =        { fg = colors.lred },
+		TSPunctBracket =   { fg = colors.lred },
+		Type =             { fg = colors.green },
+		TSFunction =         { fg = colors.dark_green },
+		Function =         { fg = colors.dark_green },
+		Identifier =       { fg = colors.dark_green },
+		TSPunctIdentifier =       { fg = colors.dark_green },
+		Comment =          { fg = colors. grey },
+		Search =           { fg = colors. lred },
+		Normal =		   { bg = colors.bg },
+	},
   	changed_themes = {},
   	theme_toggle = { "ayu-dark", "one_light" },
   	transparency = false,
