@@ -106,7 +106,8 @@ local theme_tb = {}
 for _, file in ipairs(vim.fn.readdir(th_files)) do
 	if vim.fn.isdirectory(file) == 0
 	then
-		table.insert(theme_tb, file)
+		local s = string.gsub(file, ".lua", "")
+		table.insert(theme_tb, s)
 	end
 end
 

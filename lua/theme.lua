@@ -3,7 +3,6 @@ local M = {}
 
 M.ui = {
 	-- hl = highlights
-	theme = "onedark",
   	hl_add = {},
   	hl_override = {},
   	changed_themes = {},
@@ -14,7 +13,7 @@ M.ui = {
 
 function M.get_theme_tb(type)
 	
-  local path = "themes." .. M.ui.theme
+  local path = "themes." .. vim.g.ft_theme
 
   local present, theme = pcall(require, path)
 
@@ -25,6 +24,19 @@ function M.get_theme_tb(type)
   end
 end
 
+local clear_hl = function(hl_group)
+  local highlights_raw = vim.split(vim.api.nvim_exec("filter " .. hl_group .. " hi", true), "\n")
+  local highlight_groups = {}
+
+  for _, raw_hi in ipairs(highlights_raw) do
+    table.insert(highlight_groups, string.match(raw_hi, hl_group .. "%a+"))
+  end
+
+  for _, highlight in ipairs(highlight_groups) do
+    vim.cmd([[hi clear ]] .. highlight)
+  end
+end
+
 
 local function load_all_highlights()
   vim.opt.bg = M.get_theme_tb "type" -- dark/light
@@ -32,10 +44,18 @@ local function load_all_highlights()
   -- reload highlights for theme switcher
   local reload = require("plenary.reload").reload_module
 
-  -- clear_hl "BufferLine"
-  -- clear_hl "TS"
+  clear_hl "BufferLine"
+  clear_hl "TS"
 
+  reload "theme"
+  reload "theme.integrations.alpha"
   reload "theme.integrations"
+  reload "lights"
+  reload "feline"
+  reload "config.feline"
+  require('config.feline')
+
+  M.ui.theme = vim.g.ft_theme
 
   local hl_groups = require "lights"
 
@@ -59,10 +79,11 @@ function M.change_theme(theme)
 	local exist = pcall(require, "themes." .. theme)
 
 	if theme == "integrations" or not exist then
-	  print("Error: No such theme [" .. theme .. "]")
+	  error("Error: No such theme [" .. theme .. "]")
 	end
 
-	M.ui.theme = theme
+	print("set new theme: " .. theme)
+	vim.g.ft_theme = theme
 	local colors = M.get_theme_tb "base_16"
 
 	load_all_highlights();

@@ -5,6 +5,7 @@ require "plug"
 vim.wo.numberwidth = 2
 vim.wo.relativenumber = true
 
+vim.g.ft_theme = "one_dark"
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.termguicolors = true
 vim.o.timeoutlen = 1000
@@ -14,6 +15,7 @@ vim.o.tabstop = 4
 vim.o.breakindent = true
 vim.opt.undofile = true
 vim.wo.signcolumn = 'number'
+vim.o.cmdheight = 0
 
 vim.api.nvim_set_option("backspace", "indent,eol,start")
 vim.api.nvim_set_option("arabicshape", true)
@@ -35,7 +37,7 @@ vim.cmd("set fillchars=eob:\\ ")
 vim.cmd('let mapleader = " "')
 
 local th = require("theme")
-th.change_theme("aquarium");
+th.change_theme("onedark");
 
 
 vim.cmd("syntax on")
