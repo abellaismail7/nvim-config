@@ -32,6 +32,9 @@ ts_config.setup {
             ['i;'] = 'textsubjects-container-inner',
         },
     },
+	indent = {
+		enable = true,
+	}
 }
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
