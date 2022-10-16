@@ -15,6 +15,14 @@ require'tabline'.setup {
   }
 }
 
+local tl = require'tabline'
+
+
+vim.api.nvim_create_user_command("G", function ()
+	vim.cmd(":$tab Git");
+	tl.tab_rename("GIT")
+end, {})
+
 
 vim.cmd[[
       set guioptions-=e " Use showtabline in gui vim
