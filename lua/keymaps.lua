@@ -89,7 +89,7 @@ map("n", "<leader>rmr", [[ :make fclean all ]])
 map("n", "<leader>rn", [[ :! norminette % ]])
 
 -- Terminal
-map("n", "<C-k>", require('ft_terminal').open, {desc = "toggle terminal"})
+--map("n", "<C-k>", require('ft_terminal').open, {desc = "toggle terminal"})
 
 -- buffers
 map("n", "<leader>bc", [[<Cmd>bp|bd #<CR>]], {desc = "close current buffer"}) -- close buffer
@@ -136,7 +136,7 @@ map("n", "<leader>Y", 	[["+Y]])
 map("n", "<leader>i", 	[[p<C-a>Y]])
 
 -- terminal
-map("t","<Esc>", [[ <C-\><C-n>]])
+map("t","<esc>", [[ <C-\><C-n>]])
 
 ---- COMMANDS
 vim.cmd("command -complete=lua -nargs=+ Inspect :lua print(vim.inspect(<args>))")

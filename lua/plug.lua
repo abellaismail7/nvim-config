@@ -162,10 +162,9 @@ return packer.startup(function()
   }
 
   -- utils
-  use {
-    "windwp/nvim-autopairs",
-    config = [[require('nvim-autopairs').setup{}]]
-  }
+  use {'akinsho/toggleterm.nvim', tag = '*', config = [[require'config.term']]}
+
+  use { "windwp/nvim-autopairs", config = [[require('nvim-autopairs').setup{}]] }
 
   use {'kevinhwang91/nvim-bqf', ft = 'qf'}
   use {
