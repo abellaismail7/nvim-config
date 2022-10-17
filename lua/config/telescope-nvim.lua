@@ -62,4 +62,5 @@ require("telescope").setup {
     }
 }
 
+require("keymaps").telescope()
 require("telescope").load_extension('fzy_native')

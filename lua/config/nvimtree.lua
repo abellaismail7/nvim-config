@@ -40,3 +40,5 @@ require'nvim-tree'.setup {
 		},
 	},
 }
+
+require("keymaps").nvim_tree()
