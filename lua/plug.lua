@@ -164,6 +164,8 @@ return packer.startup(function()
   -- utils
   use {'akinsho/toggleterm.nvim', tag = '*', config = [[require'config.term']]}
 
+  use { 's1n7ax/nvim-window-picker', tag = 'v1.*', config = 'require"config.win_picker"' }
+
   use { "windwp/nvim-autopairs", config = [[require('nvim-autopairs').setup{}]] }
 
   use {'kevinhwang91/nvim-bqf', ft = 'qf'}
