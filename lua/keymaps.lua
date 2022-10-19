@@ -1,19 +1,19 @@
 local map = vim.keymap.set
 local M = {};
+local winp = require("config.win_picker")
 
--- create
-map("n", "<leader>wv", 		[[<C-w>v]], {desc = "vertical split"})
-map("n", "<leader>ws", 		[[<C-w>s]], {desc = "horizontal split"})
+map("n", "<leader>w", winp.pick_win , 		{ desc = "Pick a window" });
+map("n", "<leader>r", winp.replace_win, 	{ desc = "Replace a window" });
+map("n", "<leader>=",  	[[<C-w>=]], {desc = "resize window to be equal"})
 
 -- resize
 map("n", "<C-M-Left>", 		[[<C-w><]], {desc = "resize window"})
 map("n", "<C-M-Down>", 		[[<C-w>+]], {desc = "resize window"})
 map("n", "<C-M-Up>", 		[[<C-w>-]], {desc = "resize window"})
 map("n", "<C-M-Right>", 	[[<C-w>>]], {desc = "resize window"})
-map("n", "<leader>w=",  	[[<C-w>=]], {desc = "resize window to be equal"})
 
 -- maximizer
-map("n", "<leader>wm", 		[[<C-w>|]], {desc = "maximize current window"})
+map("n", "<leader>m", 		[[<C-w>|]], {desc = "maximize current window"})
 
 -- navigation
 map("n", "<C-Left>", 		[[:wincmd h<cr>]], {desc = "goto the left window"})
@@ -37,9 +37,6 @@ map("n", "<M-Left>",	[[<cmd>TablineBufferPrev<cr>]],	{desc = "goto next buffer"}
 map("n", "<M-Right>",	[[<cmd>TablineBufferNext<cr>]],	{desc = "goto prev buffer"})
 map("n", "<M-t>",		[[<cmd>TablineTabNew<cr>]],		{desc = "create new tab"})
 map("n", "<M-r>",		[[:TablineTabRename ]],			{desc = "rename current tab"})
-
--- close
-map("n", "<leader>wc", 		[[<C-w>c]], {desc = "close current buffer"})
 
 -- switch split
 map("n", "<C-S-Left>"	, 		[[:wincmd H<cr>]], {desc = "switch current window with left one"})
@@ -77,16 +74,16 @@ function M:lsp()
 end
 
 -- Android
-map("n", "<leader>ra", require('run.android').run)
+map("n", "<leader>a", require('run.android').run)
 
 -- Make c
-map("n", "<leader>m", 	[[ :make ]])
-map("n", "<leader>rmc", [[ :make clean ]])
-map("n", "<leader>rma", [[ :make fclean ]])
-map("n", "<leader>rmr", [[ :make fclean all ]])
+map("n", "<leader>mm", 	[[ :make ]])
+map("n", "<leader>mc", [[ :make clean ]])
+map("n", "<leader>ma", [[ :make fclean ]])
+map("n", "<leader>mr", [[ :make fclean all ]])
 
 -- Norm
-map("n", "<leader>rn", [[ :! norminette % ]])
+map("n", "<leader>mn", [[ :! norminette % ]])
 
 -- Terminal
 --map("n", "<C-k>", require('ft_terminal').open, {desc = "toggle terminal"})
