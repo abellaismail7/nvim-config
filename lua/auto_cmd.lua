@@ -29,15 +29,3 @@ autocmd("FileType", {
     vim.opt_local.buflisted = false
   end,
 })
-
-
-local packer_exists, packer = pcall(require, "packer")
-
-if not packer_exists
-then
-	vim.cmd":! git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
-	packer.sync()
-end
-
-
