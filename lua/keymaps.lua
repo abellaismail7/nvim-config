@@ -47,6 +47,11 @@ map("n", "<C-S-Right>", 		[[:wincmd L<cr>]], {desc = "switch current window with
 -- utils
 map("n", "<C-c>", "<cmd> %y+ <CR>", {desc = "copy whole file"})
 
+-- prime twitter tips
+map("n", "n", 		"nzz", 		{desc = "next in the middle"})
+map("n", "<C-d>", 	"<C-d>zz", 	{desc = "next in the middle"})
+map("n", "<C-u>", 	"<C-u>zz", 	{desc = "next in the middle"})
+
 -- nvim-tree
 function M:nvim_tree()
 	map("n", "<leader>n", ":NvimTreeToggle<CR>",	{desc = "open nvim tree"})
