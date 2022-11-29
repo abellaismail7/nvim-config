@@ -11,7 +11,6 @@ local on_attach = function(_, bufnr)
 end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local lua_config = require"config.lua-lang-server"
 local servers = {
 	"pyright",
 	"clangd",
@@ -21,14 +20,17 @@ local servers = {
 	"cssls",
 	"html",
 	"svelte",
-	"rls",
 	"gopls",
 	"jdtls",
 	"prismals",
+	"ltex",
+	"eslint",
 	{name = "emmet_ls", config = { filetypes = {"html", "css", "typescriptreact"}}},
-	{name = "tsserver", config = require"config.ts-lang-server"},
-	{name = "sumneko_lua" , config = lua_config}
+	{name = "sumneko_lua" , config = require"config.lsp.lua"}
 }
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 for _, lsp in ipairs(servers) do
 	if type(lsp) == "table" then
 		local existing_on_attach = lsp.config.on_attach;
@@ -40,7 +42,7 @@ for _, lsp in ipairs(servers) do
 		end
   		nvim_lsp[lsp.name].setup(lsp.config)
 	else
-  		nvim_lsp[lsp].setup { on_attach = on_attach }
+  		nvim_lsp[lsp].setup { capabilities,  on_attach }
 	end
 end
 
@@ -61,3 +63,12 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
         update_in_insert = true,
     }
 )
+
+-- Show diagnostic popup on cursor hover
+local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+   vim.diagnostic.open_float(nil, { focusable = false })
+  end,
+  group = diag_float_grp,
+})

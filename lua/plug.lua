@@ -45,7 +45,7 @@ packer.startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     config = function()
-      require "config.nvim-lspconfig"
+      require "config.lsp"
     end
   }
 
@@ -67,14 +67,15 @@ packer.startup(function(use)
 
   use {
 	  'simrat39/rust-tools.nvim',
+	  after = "nvim-lspconfig",
 	  ft = {'rust'},
-	  config = [[require('rust-tools').setup({})]]
+	  config = [[require'config.lsp.rust']]
   }
 
   use {
 	  'mfussenegger/nvim-jdtls',
 	  ft = {'java'},
-	  config = [[ require'config.lsp_java' ]],
+	  config = [[ require'config.lsp.java' ]],
   }
 
   -- debug
@@ -130,8 +131,8 @@ packer.startup(function(use)
 
   -- Web Trash
   use {
-	  "jose-elias-alvarez/nvim-lsp-ts-utils",
-	  ft = {"typescript", "typescriptreact"},
+	"jose-elias-alvarez/typescript.nvim",
+	config = [[require'config.lsp.ts']]
   }
   use {
     "windwp/nvim-ts-autotag",
