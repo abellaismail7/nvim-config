@@ -6,10 +6,10 @@ if not present then
    return
 end
 
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
+vim.opt.completeopt = {"menuone", "noselect", "noinsert"}
 
 cmp.setup({
-
+  preselect = cmp.PreselectMode.None,
   snippet = {
      expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -36,6 +36,8 @@ cmp.setup({
   },
 
    mapping = cmp.mapping.preset.insert {
+      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<CR>"] = cmp.mapping.confirm {
          behavior = cmp.ConfirmBehavior.Insert,
