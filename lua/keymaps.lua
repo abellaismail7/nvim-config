@@ -58,6 +58,19 @@ function M:nvim_tree()
 	map("n", "<leader>e", ":NvimTreeFocus<CR>",		{desc = "focus nvim tree"})
 end
 
+function M:iron()
+	vim.keymap.set('n', ',rs', function ()
+		require('iron.core').repl_for(vim.bo.filetype)
+	end )
+	vim.keymap.set('n', ',rr', require('iron.core').restart)
+	vim.keymap.set('n', ',rf', function ()
+		require('iron.core').focus_on(vim.bo.filetype)
+	end)
+	vim.keymap.set('n', ',rh', function ()
+		require('iron.core').hide_repl(vim.bo.filetype)
+	end)
+end
+
 -- LSP
 function M:lsp()
 	map("n", "K",	vim.lsp.buf.hover			, { desc = "lsp hover"})

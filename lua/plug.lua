@@ -198,6 +198,12 @@ packer.startup(function(use)
     config = [[ require"config.alpha" ]]
   }
 
+  -- l3adama
+	use {
+		'hkupty/iron.nvim',
+		ft = {'lua', 'python'},
+		config = [[require'config.iron']]
+	}
   -- Theme
   use {
     "lukas-reineke/indent-blankline.nvim",
