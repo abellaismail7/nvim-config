@@ -129,6 +129,12 @@ packer.startup(function(use)
     config = [[require('Comment').setup()]]
   }
 
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = [[ require("todo-comments").setup() ]],
+ }
+
   -- Web Trash
   use {
 	"jose-elias-alvarez/typescript.nvim",
