@@ -59,16 +59,11 @@ function M:nvim_tree()
 end
 
 function M:iron()
-	vim.keymap.set('n', ',rs', function ()
-		require('iron.core').repl_for(vim.bo.filetype)
-	end )
-	vim.keymap.set('n', ',rr', require('iron.core').restart)
-	vim.keymap.set('n', ',rf', function ()
-		require('iron.core').focus_on(vim.bo.filetype)
-	end)
-	vim.keymap.set('n', ',rh', function ()
-		require('iron.core').hide_repl(vim.bo.filetype)
-	end)
+	local ir = require('iron.core')
+	map('n', ',rs', function () ir.repl_for(vim.bo.filetype) end, 	{desc = "open iron"} )
+	map('n', ',rr', 			ir.repl_restart,						 	{desc = "iron restart"})
+	map('n', ',rf', function () ir.focus_on(vim.bo.filetype) end,	{desc = "iron focus"})
+	map('n', ',rh', function () ir.hide_repl(vim.bo.filetype) end,	{desc = "iron hide"})
 end
 
 -- LSP
