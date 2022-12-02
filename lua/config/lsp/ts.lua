@@ -1,8 +1,6 @@
-local formatting = require "null-ls.builtins._meta.formatting"
 local api = vim.api
 local autocmd = api.nvim_create_autocmd
 
-local group = vim.api.nvim_create_augroup("MyLSPAutogroup", {})
 
 require("typescript").setup({
     server = {
@@ -18,6 +16,7 @@ require("typescript").setup({
 					})
 				end
 			})
+			require("keymaps").lsp()
 		end
 
     },
