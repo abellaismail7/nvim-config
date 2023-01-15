@@ -81,7 +81,6 @@ packer.startup(function(use)
   -- debug
   use {
 	  'mfussenegger/nvim-dap',
-	  wants = {},
 	  config= [[require'config.dap']]
   }
   use 'rcarriga/nvim-dap-ui'
@@ -91,6 +90,13 @@ packer.startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     after = "friendly-snippets",
+	requires = {
+		"saadparwaiz1/cmp_luasnip", 
+		"hrsh7th/cmp-nvim-lua", 	
+		"hrsh7th/cmp-nvim-lsp", 	
+		"hrsh7th/cmp-buffer", 		
+		"hrsh7th/cmp-path", 		
+	},
   }
 
   use {
@@ -102,12 +108,6 @@ packer.startup(function(use)
         require("config.luasnip")
       end,
   }
-
-  use { "saadparwaiz1/cmp_luasnip", after = "LuaSnip", }
-  use { "hrsh7th/cmp-nvim-lua", 	after = "cmp_luasnip", }
-  use { "hrsh7th/cmp-nvim-lsp", 	after = "cmp-nvim-lua", }
-  use { "hrsh7th/cmp-buffer", 		after = "cmp-nvim-lsp", }
-  use { "hrsh7th/cmp-path", 		after = "cmp-buffer", }
 
   -- FZF
   use{
