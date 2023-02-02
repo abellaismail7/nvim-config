@@ -42,7 +42,7 @@ for _, lsp in ipairs(servers) do
 		end
   		nvim_lsp[lsp.name].setup(lsp.config)
 	else
-  		nvim_lsp[lsp].setup { capabilities,  on_attach }
+  		nvim_lsp[lsp].setup { capabilities = capabilities,  on_attach = on_attach }
 	end
 end
 
