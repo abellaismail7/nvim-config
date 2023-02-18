@@ -180,6 +180,7 @@ packer.startup(function(use)
   }
 
   -- utils
+  use {'github/copilot.vim', config = [[require'config.copilot']]}
   use {'akinsho/toggleterm.nvim', tag = '*', config = [[require'config.term']]}
 
   use { 's1n7ax/nvim-window-picker', tag = 'v1.*', config = 'require"config.win_picker"' }
