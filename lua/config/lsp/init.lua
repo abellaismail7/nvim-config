@@ -23,10 +23,12 @@ local servers = {
 	"gopls",
 	"jdtls",
 	"prismals",
+	"jsonls",
 	"ltex",
 	"eslint",
+	"tailwindcss",
 	{name = "emmet_ls", config = { filetypes = {"html", "css", "typescriptreact"}}},
-	{name = "sumneko_lua" , config = require"config.lsp.lua"}
+	{name = "lua_ls" , config = require"config.lsp.lua"}
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
