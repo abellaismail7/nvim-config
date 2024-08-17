@@ -1,67 +1,58 @@
-vim.api.nvim_set_current_dir(vim.fn.expand("%:p:h"))
-require "unplug"
-require "plug"
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
-vim.wo.numberwidth = 2
-vim.wo.relativenumber = true
-vim.o.number = true
-vim.wo.signcolumn = 'number'
-
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-vim.o.breakindent = true
-
-vim.g.ft_theme = "onedark"
-vim.o.termguicolors = true
-vim.o.wildmenu = true
-vim.opt.undofile = true
-
-vim.opt.shortmess = "" -- vim.o.shortmess .. "c"
-vim.opt.laststatus = 3
-vim.opt.cmdheight = 0
-
-vim.opt.backspace = "indent,eol,start"
-vim.opt.arabicshape = true
-vim.opt.encoding = "UTF-8"
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.hidden = true
-vim.opt.wildoptions = "pum"
-vim.opt.pumblend = 5
-vim.opt.wildmode = "longest:full,full"
-vim.opt.mouse = ""
-
-vim.opt.timeoutlen = 1000
-vim.opt.updatetime = 250
-
-vim.opt.fillchars = { eob = " " }
-vim.opt.encoding = "utf-8"
-
-
-vim.o.showbreak = "";
-
- local signs = {
-   Error = " ",
-   Warn = " ",
-   Hint = " ",
-   Info = " ",
-}
-
-for type, icon in pairs(signs) do
-   local hl = "DiagnosticSign" .. type
-   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	-- print("lazy installing")
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out,                            "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
+vim.opt.rtp:prepend(lazypath)
 
--- indent
-vim.api.nvim_set_option("autoindent",true)
-vim.api.nvim_set_option("smartindent",true)
-vim.api.nvim_set_option("expandtab", false)
+-- Theme
+vim.cmd [[colorscheme habamax]]
 
-vim.cmd('let mapleader = " "')
+-- Load modules
+require 'opts'
+require 'plugins'
+require 'highlight' -- important to run after plugins
+require('keymaps'):basic()
+require('keymaps'):telescope()
 
-local th = require("theme")
-th.change_theme(vim.g.ft_theme);
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
 
-require"keymaps"
-require"auto_cmd"
-require"commands"
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = '*',
+})
+
+
+-- disable diagnostics in env
+local group = vim.api.nvim_create_augroup('__env', { clear = true })
+vim.api.nvim_create_autocmd('BufEnter', {
+	pattern = '.env',
+	group = group,
+	callback = function()
+		vim.diagnostic.enable(false);
+	end,
+})
