@@ -7,7 +7,19 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require 'nordic'.load()
+			local palette = require 'nordic.colors'
+			require 'nordic'.load({
+				override = {
+					-- BqfPreviewBorder = { fg = '#ffffff' },
+					-- EdgyNormal = { link = 'NeoTreeNormal' },
+					-- EdgyTitle = { link = 'NeoTreeNormal' },
+					-- EdgyIcon = { link = 'NeoTreeNormal' },
+					-- EdgyIconActive = { link = 'NeoTreeNormal' },
+					PmenuSel = { fg = palette.gray0, bg = palette.yellow.dim },
+					Normal = { bg = "#1e222a" },
+					EndOfLine = { bg = "#1e222a" },
+				}
+			})
 		end
 	},
 	-- sandwich keymaps

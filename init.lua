@@ -22,8 +22,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local current = vim.fn.expand('%:p:h')
+if vim.fn.isdirectory(current) then
+	vim.fn.chdir(current)
+end
+
+
 -- Theme
-vim.cmd [[colorscheme habamax]]
+-- vim.cmd [[colorscheme habamax]]
 
 -- Load modules
 require 'opts'
