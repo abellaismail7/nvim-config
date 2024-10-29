@@ -1,41 +1,110 @@
-vim.api.nvim_create_user_command('JSSortImports', ':TSToolsSortImports', {
-	nargs = 0,
+local M = {}
+local util = require("lspconfig.util")
+
+local nvim_lsp = require("lspconfig")
+
+vim.diagnostic.config({
+	update_in_insert = false, -- Disable updates in insert mode
 })
 
-vim.api.nvim_create_user_command('JSOrganizeImports', ':TSToolsOrganizeImports', {
-	nargs = 0,
-})
+function M.setup()
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-vim.api.nvim_create_user_command('JSGoToSourceDefinition', ':TSToolsGoToSourceDefinition', {
-	nargs = 0,
-})
+	nvim_lsp.tailwindcss.setup({ on_attach = function() end })
+	nvim_lsp.jsonls.setup({ on_attach = function() end })
+	nvim_lsp.eslint.setup({ on_attach = function() end })
 
-vim.api.nvim_create_user_command('JSFileReferences', ':TSToolsFileReferences', {
-	nargs = 0,
-})
+	nvim_lsp.ts_ls.setup({
+		cmd = { "typescript-language-server", "--stdio" },
+		capabilities = capabilities,
 
-vim.api.nvim_create_user_command('JSAddMissingImports', ':TSToolsAddMissingImports', {
-	nargs = 0,
-})
+		on_attach = function()
+			require("keymaps"):lsp()
+			-- format
+			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+		end,
 
-vim.api.nvim_create_user_command('JSRenameFile', ':TSToolsRenameFile', {
-	nargs = 0,
-})
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+		},
 
-vim.api.nvim_create_user_command('JSFixAll', ':TSToolsFixAll', {
-	nargs = 0,
-})
+		root_dir = function(fname)
+			print(fname, util.root_pattern("deno.json")(fname));
+			return (util.root_pattern("tsconfig.json", "jsconfig.json")(fname)
+				or util.root_pattern("package.json")(fname))
+		end,
+		single_file_support = true,
 
-vim.api.nvim_create_user_command('JSRemoveUnused', ':TSToolsRemoveUnused', {
-	nargs = 0,
-})
+		init_options = {
+			maxTsServerMemory = 4096,
+			disableAutomaticTypingAcquisition = true,
+			preferences = {
+				importModuleSpecifierPreference = "non-relative",
+				includePackageJsonAutoImports = "auto",
+			},
+		},
 
-vim.api.nvim_create_user_command('JSRemoveUnusedImports', ':TSToolsRemoveUnusedImports', {
-	nargs = 0,
-})
+		-- settings = {
+		-- 	typescript = {
+		-- 		updateImportsOnFileMove = "always",
+		-- 		format = {
+		-- 			enable = false,
+		-- 		},
+		-- 		-- Disable automatic type acquisition
+		-- 		disableAutomaticTypeAcquisition = true,
 
-return {
-	on_attach = function()
-		require('keymaps'):lsp()
-	end,
-}
+		-- 		-- Reduce suggestion computation
+		-- 		suggestionActions = {
+		-- 			enabled = false,
+		-- 		},
+
+		-- 		-- Optimize inlay hints
+		-- 		inlayHints = {
+		-- 			includeInlayEnumMemberValueHints = false,
+		-- 			includeInlayFunctionLikeReturnTypeHints = false,
+		-- 			includeInlayFunctionParameterTypeHints = false,
+		-- 			includeInlayParameterNameHints = "none",
+		-- 			includeInlayPropertyDeclarationTypeHints = false,
+		-- 			includeInlayVariableTypeHints = false,
+		-- 		},
+
+		-- 		-- Reduce background analysis
+		-- 		maxTsServerMemory = 8192,
+		-- 		noSemanticValidation = false,
+		-- 		noSyntaxValidation = false,
+		-- 	},
+		-- 	javascript = {
+		-- 		updateImportsOnFileMove = "always",
+		-- 		tsserver = {
+		-- 			maxTsServerMemory = 8192,
+		-- 		},
+		-- 		format = {
+		-- 			enable = false,
+		-- 		},
+		-- 	},
+		-- 	vtsls = {
+		-- 		enableMoveToFileCodeAction = true,
+		-- 		experimental = {
+		-- 			completion = {
+		-- 				enableServerSideFuzzyMatch = true,
+		-- 				entriesLimit = 50,
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	init_options = {
+		-- 		hostInfo = "neovim",
+		-- 		preferences = {
+		-- 			disableSuggestions = true,
+		-- 		},
+		-- 		maxTsServerMemory = 8192,
+		-- 	},
+		-- },
+	})
+end
+
+return M

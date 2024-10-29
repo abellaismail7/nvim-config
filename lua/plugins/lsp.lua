@@ -28,10 +28,15 @@ return {
 		-- end,
 	},
 	-- Typescript
-	{
-		'pmizio/typescript-tools.nvim',
-		opts = require 'config.lsp.ts',
-	},
+	--{
+	--	'pmizio/typescript-tools.nvim',
+	--	opts = require 'config.lsp.ts',
+	--},
+
+	-- {
+	-- 	'yioneko/nvim-vtsls',
+	-- },
+
 	-- Format / Linting
 	{
 		'stevearc/conform.nvim',

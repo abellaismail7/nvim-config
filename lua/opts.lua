@@ -14,15 +14,15 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.numberwidth = 2
-vim.wo.signcolumn = 'number'
+vim.wo.signcolumn = "number"
 
 -- Enable mouse mode
-vim.o.mouse = ''
+vim.o.mouse = ""
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -39,10 +39,10 @@ vim.o.smartcase = true
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 1000
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
@@ -51,33 +51,33 @@ vim.o.termguicolors = true
 vim.opt.laststatus = 3
 
 -- split
-vim.opt.splitkeep = 'screen'
+vim.opt.splitkeep = "screen"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.g.VM_theme = 'nord'
-vim.g.VM_leader = '\\'
+vim.g.VM_theme = "nord"
+vim.g.VM_leader = "\\"
 
 -- spell
-vim.opt.spelllang = 'en_us,fr'
+vim.opt.spelllang = "en_us,fr"
 vim.opt.spell = true
 
 -- disable folding
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob:~,fold: ,foldopen:,foldsep: ,foldclose:]]
 --vim.opt.foldenable = false
 
 local signs = {
-	Error = ' ',
-	Warn = ' ',
-	Hint = ' ',
-	Info = ' ',
+	Error = " ",
+	Warn = " ",
+	Hint = " ",
+	Info = " ",
 }
 
 for type, icon in pairs(signs) do
-	local hl = 'DiagnosticSign' .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
