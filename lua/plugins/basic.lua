@@ -15,16 +15,13 @@ return {
 					theme = "light",
 					blend = 1,
 				},
-				-- on_highlight = function(highlights, palette)
-				-- 	-- BqfPreviewBorder = { fg = '#ffffff' },
-				-- 	-- EdgyNormal = { link = 'NeoTreeNormal' },
-				-- 	-- EdgyTitle = { link = 'NeoTreeNormal' },
-				-- 	-- EdgyIcon = { link = 'NeoTreeNormal' },
-				-- 	-- EdgyIconActive = { link = 'NeoTreeNormal' },
-				-- 	highlights.PmenuSel = { fg = palette.gray0, bg = palette.yellow.dim }
-				-- 	highlights.Normal = { bg = "#1e222a" }
-				-- 	highlights.EndOfLine = { bg = "#1e222a" }
-				-- end,
+
+				on_highlight = function(highlights, palette)
+					highlights.MiniTablineVisible = { bg = palette.bg_statusline, fg = palette.fg } -- tab pages line, not active tab page label
+    			highlights.MiniTablineFill = { bg = palette.black0, fg = palette.none } -- tab pages line, where there are no labels
+    			highlights.MiniTablineCurrent = { fg = palette.black0, bg = palette.orange.base, bold = true } -- tab pages line, active tab page label
+    			highlights.MiniTablineTabpagesection = { fg = palette.black0, bg = palette.orange.base, bold = true } -- tab pages line, active tab page label
+				end,
 			})
 		end,
 	},

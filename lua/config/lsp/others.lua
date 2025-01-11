@@ -16,6 +16,7 @@ local servers = {
 	"ltex",
 	"lua_ls",
 	"biome",
+	--"emmet_language_server",
 }
 
 local M = {};

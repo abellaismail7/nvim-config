@@ -1,1 +1,3 @@
-return {}
+return {
+  tabpage_section = 'right',
+}

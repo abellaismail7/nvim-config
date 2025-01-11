@@ -4,9 +4,9 @@ local util = require("lspconfig.util")
 
 local nvim_lsp = require("lspconfig")
 
-vim.diagnostic.config({
-	update_in_insert = false, -- Disable updates in insert mode
-})
+-- vim.diagnostic.config({
+-- 	update_in_insert = false, -- Disable updates in insert mode
+-- })
 
 function M.setup()
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
