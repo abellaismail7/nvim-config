@@ -2,6 +2,11 @@ return {
 	-- Libraries (Lua plugins/libraries are automatically loaded when they are require())
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{ "echasnovski/mini.icons", lazy = true },
+	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-sleuth" },
+	{ "tpope/vim-dadbod" },
+	{ "kristijanhusak/vim-dadbod-completion" },
+	{ "kristijanhusak/vim-dadbod-ui" },
 	{
 		"AlexvZyl/nordic.nvim",
 		lazy = false,

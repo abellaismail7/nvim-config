@@ -49,13 +49,13 @@ cmp.setup {
 	),
 }
 
--- cmp.setup.filetype({ 'sql' }, {
--- 	sources = {
--- 		{ name = 'vim-dadbod-completion' },
--- 		{ name = 'luasnip' },
--- 		{ name = 'buffer' },
--- 	},
--- })
+cmp.setup.filetype({ 'sql' }, {
+	sources = {
+		{ name = 'vim-dadbod-completion' },
+		{ name = 'luasnip' },
+		{ name = 'buffer' },
+	},
+})
 --
 -- cmp.setup.cmdline({ '/', '?' }, {
 -- 	mapping = cmp.mapping.preset.cmdline(),

@@ -34,8 +34,8 @@ function M:basic()
 	-- Buffer navigation
 	map("n", "<leader><Down>", [[gt]], { desc = "goto prev tab" })
 	map("n", "<leader><Up>", [[gT]], { desc = "goto next tab" })
-	map("n", "<leader><Left>", [[<cmd>BufferLineCyclePrev<cr>]], { desc = "goto next buffer" })
-	map("n", "<leader><Right>", [[<cmd>BufferLineCycleNext<cr>]], { desc = "goto prev buffer" })
+	map("n", "<leader><Left>", [[<cmd>bnext<cr>]], { desc = "goto next buffer" })
+	map("n", "<leader><Right>", [[<cmd>bprevious<cr>]], { desc = "goto prev buffer" })
 	map("n", "<leader>tn", [[<cmd>tabnew<cr>]], { desc = "create new tab" })
 	map("n", "<leader>tr", [[:TablineTabRename ]], { desc = "rename current tab" })
 
