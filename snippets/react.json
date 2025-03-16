@@ -1,0 +1,19 @@
+{
+  "ReactFunctionComponent": {
+    "prefix": "rfc",
+    "body": [
+      "import { useState, useEffect } from 'react';",
+      "",
+      "interface ${1:Name}Props {",
+      "  $2",
+      "}",
+      "",
+      "export function ${1:Name}({ $4 }: ${1:Name}Props) {",
+      "  return (",
+      "    $5",
+      "  );",
+      "}"  
+    ],
+    "description": "Snippet for a React component with TypeScript."
+  }
+}

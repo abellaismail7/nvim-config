@@ -7,7 +7,6 @@ local servers = {
 	"dartls",
 	"kotlin_language_server",
 	"vuels",
-	"cssls",
 	"html",
 	"svelte",
 	"gopls",
@@ -16,7 +15,7 @@ local servers = {
 	"ltex",
 	"lua_ls",
 	"biome",
-	--"emmet_language_server",
+	"emmet_language_server",
 }
 
 local M = {};

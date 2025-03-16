@@ -70,6 +70,10 @@ vim.o.foldenable = true
 vim.o.fillchars = [[eob:~,fold: ,foldopen:,foldsep: ,foldclose:]]
 --vim.opt.foldenable = false
 
+-- plugins
+vim.g.copilot_no_tab_map = true
+
+
 local signs = {
 	Error = " ",
 	Warn = " ",

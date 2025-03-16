@@ -20,7 +20,7 @@ function M.setup()
 		end,
 
 		root_dir = function(fname)
-				return util.root_pattern("deno.json")(fname)
+				return util.root_pattern("deno.json")(fname) or util.root_pattern("deno.jsonc")(fname)
 		end,
 
 	})

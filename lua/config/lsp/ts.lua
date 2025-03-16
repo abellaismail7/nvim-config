@@ -14,6 +14,9 @@ function M.setup()
 	nvim_lsp.jsonls.setup({ on_attach = function() end })
 	nvim_lsp.eslint.setup({ on_attach = function() end })
 
+	if os.getenv("IS_DENO") ~= nil then
+		return
+	end
 	nvim_lsp.ts_ls.setup({
 		cmd = { "typescript-language-server", "--stdio" },
 		capabilities = capabilities,
@@ -34,18 +37,18 @@ function M.setup()
 		},
 
 		root_dir = function(fname)
-			print(fname, util.root_pattern("deno.json")(fname));
 			return (util.root_pattern("tsconfig.json", "jsconfig.json")(fname)
 				or util.root_pattern("package.json")(fname))
 		end,
-		single_file_support = true,
+		single_file_support = os.getenv("TS_DISABLE_SINGLE_FILE_SUPPORT") == nil,
 
 		init_options = {
 			maxTsServerMemory = 4096,
 			disableAutomaticTypingAcquisition = true,
 			preferences = {
-				importModuleSpecifierPreference = "non-relative",
+				-- importModuleSpecifierPreference = "non-relative",
 				includePackageJsonAutoImports = "auto",
+				-- includeCompletionsForModuleExports = false,
 			},
 		},
 

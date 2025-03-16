@@ -69,7 +69,8 @@ function M:basic()
 		require("telescope.builtin").quickfix(sample)
 	end, { desc = "[Q]uickfix [T]elescope" })
 
-	M.gitworktree(M)
+	M:gitworktree()
+	M:copilot()
 end
 
 function M:telescope()
@@ -113,7 +114,7 @@ function M.lsp()
 	end
 
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-	nmap(",a", vim.lsp.buf.code_action, "[C]ode [A]ction")
+	nmap("<M-CR>", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
@@ -198,6 +199,10 @@ function M:dap()
 	map("n", "<F4>", dap.step_out)
 	map("n", "<F5>", dap.step_back)
 	map("n", "<F12>", dap.restart)
+end
+
+function M:copilot()
+	map("i", "<C-]>", 'copilot#Accept("<CR>")', { silent = true, expr = true, noremap = true, replace_keycodes = false })
 end
 
 return M

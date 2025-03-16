@@ -13,8 +13,11 @@ return {
 	-- Rust
 	{
 		'mrcjkb/rustaceanvim',
-		version = '^4', -- Recommended
+		version = '^5', -- Recommended
 		lazy = false,
+		config = function()
+			require 'config.lsp.rust'
+		end,
 	},
 	-- Flutter
 	{
@@ -23,6 +26,9 @@ return {
 		dependencies = {
 			'stevearc/dressing.nvim', -- optional for vim.ui.select
 		},
+		config = function()
+			require 'config.lsp.flutter'
+		end,
 		-- config = function()
 		--   require 'config.lsp.flutter'
 		-- end,
