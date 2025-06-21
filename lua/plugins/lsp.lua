@@ -39,9 +39,12 @@ return {
 	--	opts = require 'config.lsp.ts',
 	--},
 
-	-- {
-	-- 	'yioneko/nvim-vtsls',
-	-- },
+	{
+		'yioneko/nvim-vtsls',
+		config = function ()
+			--require('config.lsp.ts').setup()
+		end
+	},
 
 	-- Format / Linting
 	{

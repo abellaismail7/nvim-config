@@ -73,6 +73,10 @@ vim.o.fillchars = [[eob:~,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- plugins
 vim.g.copilot_no_tab_map = true
 
+-- denols settings
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
 
 local signs = {
 	Error = " ",

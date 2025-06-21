@@ -1,5 +1,5 @@
-require "config.lsp.ts":setup()
-require "config.lsp.deno":setup()
+-- require "config.lsp.ts":setup()
+-- require "config.lsp.deno":setup()
 require "config.lsp.others":setup()
 
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
