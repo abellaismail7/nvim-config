@@ -2,6 +2,8 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+require("config.cmp.shadcn")
+
 require("luasnip.loaders.from_vscode").lazy_load({
 	paths = vim.fn.stdpath("config") .. "/snippets",
 })
@@ -70,6 +72,7 @@ cmp.setup({
 		{ name = "luasnip", trigger_characters = { "~" }, priority = 3 },
 		{ name = "path", priority = 2 },
 		{ name = "buffer", priority = 1 },
+		{ name = "nvim_shad", priority = 1 },
 	},
 	sorting = {
 		comparators = {

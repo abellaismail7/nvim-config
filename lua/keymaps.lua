@@ -6,6 +6,10 @@ local M = {}
 --
 
 function M:basic()
+	-- disable pageup/down
+	map({ "n", "i", "v" }, "<PageUp>", "<Nop>", { silent = true })
+	map({ "n", "i", "v" }, "<PageDown>", "<Nop>", { silent = true })
+
 	local sample = require("telescope.themes").get_dropdown({ winblend = 10, previewer = true })
 	-- Keymaps for better default experience
 	-- See `:help vim.keymap.set()`
@@ -57,6 +61,27 @@ function M:basic()
 	-- format
 	vim.keymap.set("n", "gqf", require("conform").format, { desc = "Format file" })
 
+	-- path
+	vim.keymap.set("n", "<leader>pp", function()
+		local path = vim.fn.expand("%:h")
+		if path == "" then
+			vim.notify("No file to copy path", vim.log.levels.WARN)
+			return
+		end
+		vim.fn.setreg("+", path)
+		vim.notify("Copied path to clipboard: " .. path, vim.log.levels.INFO)
+	end, { desc = "copy current path" })
+
+	vim.keymap.set("n", "<leader>pf", function()
+		local path = vim.fn.expand("%")
+		if path == "" then
+			vim.notify("No file to copy filepath", vim.log.levels.WARN)
+			return
+		end
+		vim.fn.setreg("+", path)
+		vim.notify("Copied file path to clipboard: " .. path, vim.log.levels.INFO)
+	end, { desc = "copy current file path" })
+
 	-- qf list
 	map("n", "<leader>qo", [[<Cmd>copen<CR>]], { desc = "open [Q]uickfix list" })
 	map("n", "<leader>qc", [[<Cmd>cclose<CR>]], { desc = "close [Q]uickfix list" })
@@ -71,6 +96,7 @@ function M:basic()
 
 	M:gitworktree()
 	M:copilot()
+	M:ts_text_objects()
 end
 
 function M:telescope()
@@ -98,10 +124,16 @@ function M:telescope()
 	map("n", "gl", fav_theme("lsp_document_symbols"), { desc = "[G]o to [L]sp of symbols" })
 	map("n", "<leader><leader>", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 	map("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
-	map("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
+	map("n", "<leader>fg", function()
+		fav_theme("live_grep", true, {})()
+	end, { desc = "[S]earch by [G]rep" })
 	map("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 	map("n", "<leader>fs", function()
-		fav_theme("grep_string", true, { search = vim.fn.input("Search > ") })()
+		local search = vim.fn.input("Search > ")
+		if search == "" then
+			return
+		end
+		fav_theme("grep_string", true, { search = search })()
 	end, { desc = "grep for words" })
 end
 
@@ -208,6 +240,21 @@ function M:copilot()
 		'copilot#Accept("<CR>")',
 		{ silent = true, expr = true, noremap = true, replace_keycodes = false }
 	)
+end
+
+function M:ts_text_objects()
+	local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+
+	-- Repeat movement with ; and ,
+	-- ensure ; goes forward and , goes backward regardless of the last direction
+	vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+	vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+
+	-- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+	vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
+	vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
+	vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
+	vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
 end
 
 return M

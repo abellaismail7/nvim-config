@@ -36,6 +36,7 @@ require("plugins")
 require("highlight") -- important to run after plugins
 require("keymaps"):basic()
 require("keymaps"):telescope()
+require("commands")
 
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
@@ -59,7 +60,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	group = group,
 	callback = function(ev)
 		vim.diagnostic.enable(false, {
-			bufnr = ev.buf
+			bufnr = ev.buf,
 		})
 	end,
 })

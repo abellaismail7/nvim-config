@@ -16,7 +16,6 @@ return {
 	root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
 	root_dir = function(bufnr, on_dir)
 		if not file_exists("deno.jsonc") then
-			print("vtsls root_dir")
 			on_dir(vim.fn.getcwd())
 		end
 	end,

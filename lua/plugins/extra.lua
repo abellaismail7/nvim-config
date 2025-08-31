@@ -11,6 +11,16 @@ return {
 		opts = require("config.lualine"),
 	},
 	{ "github/copilot.vim" },
+	{
+		"olimorris/codecompanion.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("config.ai.codecompanion"):setup()
+		end,
+	},
 	{ "echasnovski/mini.tabline", version = "*", opts = require("config.mini.tabline") },
 	{ "tiagovla/scope.nvim", config = true },
 	{ "echasnovski/mini.pairs", version = "*", opts = require("config.mini.autopair") },
