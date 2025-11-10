@@ -68,20 +68,19 @@ if [ $? -ne 0 ]; then
 	export PATH+=':$HOME/bin'
 fi
 
-git clone -q --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim 2> /dev/null && echo "Packer.nvim [installed]" || echo "Packer [Already exist]"
 
 if [[ -d $HOME/.config/nvim ]]; then
-	git -C $HOME/.config/nvim remote -v | grep -q "abellaismail7/nvim-config"
+	git -C $HOME/.config/nvim remote -v | grep -q "abellaismail7/config.nvim"
 	if [[ $? -eq 0 ]]; then
-		echo "pulling from abellaismail7/nvim-config"
+		echo "pulling from abellaismail7/config.nvim"
 		git -C $HOME/.config/nvim pull -q
 	else
 		echo "an other nvim_config exists .. moving it to $HOME/.config/old_nvim"
 		mv $HOME/.config/nvim $HOME/.config/old_nvim
-		echo "cloning from abellaismail7/nvim-config"
-		git clone -q https://github.com/abellaismail7/nvim-config.git $HOME/.config/nvim
+		echo "cloning from abellaismail7/config.nvim"
+		git clone -q https://github.com/abellaismail7/config.nvim.git $HOME/.config/nvim
 	fi
 else
-	echo "cloning from abellaismail7/nvim-config"
-	git clone -q https://github.com/abellaismail7/nvim-config.git $HOME/.config/nvim
+	echo "cloning from oussamakrich/nvim-config"
+	git clone -q https://github.com/abellaismail7/config.nvim.git $HOME/.config/nvim
 fi
