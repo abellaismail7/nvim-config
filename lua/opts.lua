@@ -70,22 +70,8 @@ vim.o.foldenable = true
 vim.o.fillchars = [[eob:~,fold: ,foldopen:,foldsep: ,foldclose:]]
 --vim.opt.foldenable = false
 
--- plugins
-vim.g.copilot_no_tab_map = true
-
 -- denols settings
 vim.g.markdown_fenced_languages = {
-  "ts=typescript"
+	"ts=typescript",
 }
 
-local signs = {
-	Error = " ",
-	Warn = " ",
-	Hint = " ",
-	Info = " ",
-}
-
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end

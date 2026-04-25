@@ -43,18 +43,30 @@ return {
 		cmd = { "Oil" },
 		opts = require("config.oil"),
 	},
+
 	-- Fuzzy Finder (files, Lsp, etc)
 	{
 		"nvim-telescope/telescope.nvim",
 		version = "*",
 		opts = require("config.telescope"),
 	},
+	{
+		"ibhagwan/fzf-lua",
+		config = function()
+			require("config.fzf-lua"):setup()
+		end,
+	},
 	-- Highlight, edit, and navigate code
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
+		branch = "main",
 		version = false, -- last release is way too old and doesn't work on Windows
 		build = ":TSUpdate",
 		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
@@ -62,7 +74,15 @@ return {
 		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		init = function(plugin)
 			require("lazy.core.loader").add_to_rtp(plugin)
-			require("nvim-treesitter.query_predicates")
+			-- require("nvim-treesitter.query_predicates")
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					-- Enable treesitter highlighting and disable regex syntax
+					pcall(vim.treesitter.start)
+					-- Enable treesitter-based indentation
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
 		end,
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 		keys = {
@@ -72,7 +92,7 @@ return {
 		opts_extend = { "ensure_installed" },
 		opts = require("config.nvim-treesitter"),
 		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
+			require("nvim-treesitter").setup(opts)
 		end,
 	},
 	-- Auto completion

@@ -95,8 +95,9 @@ function M:basic()
 	end, { desc = "[Q]uickfix [T]elescope" })
 
 	M:gitworktree()
-	M:copilot()
 	M:ts_text_objects()
+	require("config.ai.sidekick"):keys()
+	require("config.copilot"):keys()
 end
 
 function M:telescope()
@@ -171,8 +172,12 @@ end
 
 function M.diagnostic()
 	-- Diagnostic keymaps
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+	vim.keymap.set("n", "[d", function()
+		vim.diagnostic.jump({ count = -1, float = true })
+	end, { desc = "Go to previous diagnostic message" })
+	vim.keymap.set("n", "]d", function()
+		vim.diagnostic.jump({ count = 1, float = true })
+	end, { desc = "Go to next diagnostic message" })
 	vim.keymap.set("n", ",e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 	vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 end
@@ -233,17 +238,8 @@ function M:dap()
 	map("n", "<F12>", dap.restart)
 end
 
-function M:copilot()
-	map(
-		"i",
-		"<C-]>",
-		'copilot#Accept("<CR>")',
-		{ silent = true, expr = true, noremap = true, replace_keycodes = false }
-	)
-end
-
 function M:ts_text_objects()
-	local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+	local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
 
 	-- Repeat movement with ; and ,
 	-- ensure ; goes forward and , goes backward regardless of the last direction
@@ -256,5 +252,43 @@ function M:ts_text_objects()
 	vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
 	vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
 end
+
+-- Keybinding to copy type under cursor
+vim.keymap.set("n", "<leader>ct", function()
+	local params = vim.lsp.util.make_position_params(0, "utf-8")
+
+	vim.lsp.buf_request_all(0, "textDocument/hover", params, function(results)
+		local result
+		for _, res in pairs(results or {}) do
+			if res.result and res.result.contents then
+				result = res.result
+				break
+			end
+		end
+		if not result then
+			print("No type information available")
+			return
+		end
+
+		local contents = result.contents
+		local markdown_text = ""
+
+		if type(contents) == "table" and contents.kind == "markdown" then
+			markdown_text = contents.value
+		elseif type(contents) == "table" and contents[1] then
+			markdown_text = contents[1].value or tostring(contents[1])
+		else
+			markdown_text = tostring(contents)
+		end
+
+		-- Extract just the type information (remove markdown formatting)
+		local type_line = markdown_text:match("```%w*\n(.-)```") or markdown_text:match("^([^\n]*)")
+
+		if type_line then
+			vim.fn.setreg("+", type_line)
+			print("Type copied: " .. type_line)
+		end
+	end)
+end, { desc = "Copy type under cursor to clipboard" })
 
 return M

@@ -10,15 +10,22 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = require("config.lualine"),
 	},
-	{ "github/copilot.vim" },
+	-- { "github/copilot.vim" },
 	{
-		"olimorris/codecompanion.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
+		"folke/sidekick.nvim",
 		config = function()
-			require("config.ai.codecompanion"):setup()
+			require("config.ai.sidekick"):setup()
+		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		dependencies = {
+			"copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+		},
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("config.copilot").setup({})
 		end,
 	},
 	{ "echasnovski/mini.tabline", version = "*", opts = require("config.mini.tabline") },

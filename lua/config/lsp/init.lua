@@ -18,6 +18,8 @@ local servers = {
 	"eslint",
 	"vtsls",
 	"denols",
+	"gleam",
+	"copilot",
 }
 
 local M = {}

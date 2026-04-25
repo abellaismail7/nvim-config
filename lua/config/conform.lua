@@ -8,10 +8,12 @@ M.setup = function()
 			-- Conform will run multiple formatters sequentially
 			python = { "isort", "black" },
 			-- Use a sub-list to run only the first available formatter
-			javascript = { "biome", "biome-organize-imports" },
-			typescript = { "biome", "biome-organize-imports" },
-			typescriptreact = { "biome" },
+			javascript = { "biome", "prettier" },
+			typescript = { "biome", "prettier" },
+			typescriptreact = { "biome", "prettier" },
 			astro = { "prettier" },
+			json = { "fixjson" },
+			jsonc = { "fixjson" },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
@@ -19,7 +21,11 @@ M.setup = function()
 			lsp_format = "never",
 		},
 		formatters = {
+			biome = {
+				require_cwd = true,
+			},
 			prettier = {
+				require_cwd = true,
 				args = function(_, ctx) -- first argument is self
 					if vim.endswith(ctx.filename, ".astro") then
 						return {

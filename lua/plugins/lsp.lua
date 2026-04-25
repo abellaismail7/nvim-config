@@ -1,6 +1,9 @@
 return {
 	-- Libraries
-
+	{
+		"j-hui/fidget.nvim",
+		opts = {},
+	},
 	{ "stevearc/dressing.nvim", lazy = true }, -- optional for vim.ui.select
 	-- LSP Configuration & Plugins
 	{
