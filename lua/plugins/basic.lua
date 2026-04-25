@@ -122,7 +122,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		opts = require("config.gitsigns"),
 		cmd = { "Gitsigns" },
-		lazy = false,
+		event = { "BufReadPre", "BufNewFile" },
 	},
 
 	{

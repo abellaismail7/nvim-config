@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
 	require("conform").setup({
-		log_level = vim.log.levels.TRACE,
+		log_level = vim.log.levels.WARN,
 		formatters_by_ft = {
 			lua = { "stylua" },
 			-- Conform will run multiple formatters sequentially

@@ -16,8 +16,8 @@ return {
 	-- Rust
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^5", -- Recommended
-		lazy = false,
+		version = "^5",
+		ft = { "rust" },
 		config = function()
 			require("config.lsp.rust")
 		end,
@@ -25,16 +25,13 @@ return {
 	-- Flutter
 	{
 		"akinsho/flutter-tools.nvim",
-		lazy = false,
+		ft = { "dart" },
 		dependencies = {
-			"stevearc/dressing.nvim", -- optional for vim.ui.select
+			"stevearc/dressing.nvim",
 		},
 		config = function()
 			require("config.lsp.flutter")
 		end,
-		-- config = function()
-		--   require 'config.lsp.flutter'
-		-- end,
 	},
 	-- Typescript
 	--{
@@ -85,7 +82,7 @@ return {
 	{
 		"elixir-tools/elixir-tools.nvim",
 		version = "*",
-		event = { "BufReadPre", "BufNewFile" },
+		ft = { "elixir", "eelixir", "heex" },
 		config = function()
 			local elixir = require("elixir")
 			local elixirls = require("elixir.elixirls")

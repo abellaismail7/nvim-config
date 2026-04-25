@@ -38,9 +38,11 @@ require("keymaps"):basic()
 require("keymaps"):telescope()
 require("commands")
 
--- Enable telescope fzf native, if installed
-pcall(require("telescope").load_extension, "fzf")
-pcall(require("telescope").load_extension, "git_worktree")
+-- Enable telescope fzf native, if installed (deferred so telescope can lazy-load)
+vim.schedule(function()
+	pcall(require("telescope").load_extension, "fzf")
+	pcall(require("telescope").load_extension, "git_worktree")
+end)
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

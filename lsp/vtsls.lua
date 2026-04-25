@@ -22,19 +22,48 @@ return {
 	single_file_support = true,
 	settings = {
 		javascript = {
-			updateImportsOnFileMove = "always",
+			updateImportsOnFileMove = { enabled = "always" },
 		},
 		vtsls = {
 			enableMoveToFileCodeAction = true,
+			autoUseWorkspaceTsdk = true,
+			experimental = {
+				maxInlayHintLength = 30,
+				completion = {
+					enableServerSideFuzzyMatch = true,
+					entriesLimit = 20,
+				},
+			},
+			tsserver = {
+				globalPlugins = {},
+				maxTsServerMemory = 8192,
+			},
 		},
 		typescript = {
-			updateImportsOnFileMove = "always",
+			updateImportsOnFileMove = { enabled = "always" },
+			tsserver = {
+				maxTsServerMemory = 8192,
+				experimental = {
+					enableProjectDiagnostics = false,
+				},
+				watchOptions = {
+					watchFile = "useFsEventsOnParentDirectory",
+					watchDirectory = "useFsEvents",
+					fallbackPolling = "dynamicPriority",
+				},
+			},
+			preferences = {
+				includePackageJsonAutoImports = "auto",
+			},
+			suggest = {
+				completeFunctionCalls = false,
+			},
 			inlayHints = {
 				parameterNames = { enabled = "literals" },
-				parameterTypes = { enabled = true },
-				variableTypes = { enabled = true },
+				parameterTypes = { enabled = false },
+				variableTypes = { enabled = false },
 				propertyDeclarationTypes = { enabled = true },
-				functionLikeReturnTypes = { enabled = true },
+				functionLikeReturnTypes = { enabled = false },
 				enumMemberValues = { enabled = true },
 			},
 		},
