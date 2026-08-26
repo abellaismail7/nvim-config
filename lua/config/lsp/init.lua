@@ -25,6 +25,13 @@ local servers = {
 local M = {}
 
 function M:setup()
+	-- Feed nvim-cmp's capabilities (snippets, resolve support, completion item
+	-- defaults) to every server; `*` applies to all of them.
+	local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+	if ok then
+		vim.lsp.config("*", { capabilities = cmp_nvim_lsp.default_capabilities() })
+	end
+
 	vim.lsp.enable(servers)
 
 	vim.diagnostic.config({
