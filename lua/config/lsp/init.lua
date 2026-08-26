@@ -52,7 +52,7 @@ function M:setup()
 
 	vim.api.nvim_create_autocmd("LspAttach", {
 		callback = function(args)
-			require("keymaps"):lsp()
+			require("keymaps").lsp(args.buf)
 			local client = vim.lsp.get_client_by_id(args.data.client_id)
 			if client:supports_method("textDocument/foldingRange") then
 				local win = vim.api.nvim_get_current_win()

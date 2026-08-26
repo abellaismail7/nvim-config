@@ -4,8 +4,8 @@ vim.g.rustaceanvim = {
   },
   -- LSP configuration
   server = {
-    on_attach = function(client, bufnr)
-			require'keymaps'.lsp()
+    on_attach = function(_, bufnr)
+      require('keymaps').lsp(bufnr)
     end,
     default_settings = {
       -- rust-analyzer language server configuration

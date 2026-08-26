@@ -110,12 +110,13 @@ function M:fzf()
 	map("n", "<leader>fd", fzf.diagnostics_workspace, { desc = "[S]earch [D]iagnostics" })
 end
 
-function M.lsp()
+---@param bufnr integer buffer the LSP client attached to; keymaps are local to it
+function M.lsp(bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
 		end
-		vim.keymap.set("n", keys, func, { desc = desc })
+		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
@@ -139,7 +140,7 @@ function M.lsp()
 	nmap("<leader>lwl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "[W]orkspace [L]ist Folders")
-	M:diagnostic()
+	M.diagnostic()
 end
 
 function M.diagnostic()
