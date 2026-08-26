@@ -8,9 +8,9 @@ M.setup = function()
 			-- Conform will run multiple formatters sequentially
 			python = { "isort", "black" },
 			-- Use a sub-list to run only the first available formatter
-			javascript = { "biome", "prettier" },
-			typescript = { "biome", "prettier" },
-			typescriptreact = { "biome", "prettier" },
+			javascript = { "oxfmt", "biome", "prettier" },
+			typescript = { "oxfmt", "biome", "prettier" },
+			typescriptreact = { "oxfmt", "biome", "prettier" },
 			astro = { "prettier" },
 			json = { "fixjson" },
 			jsonc = { "fixjson" },
