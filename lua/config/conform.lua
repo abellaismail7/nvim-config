@@ -14,13 +14,19 @@ M.setup = function()
 			astro = { "prettier" },
 			json = { "fixjson" },
 			jsonc = { "fixjson" },
+			rust = { "rustfmt" },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
-			timeout_ms = 500,
+			timeout_ms = 2000,
 			lsp_format = "never",
 		},
 		formatters = {
+			rustfmt = {
+				-- conform reads the edition from Cargo.toml; this is the fallback
+				-- for standalone files outside a crate.
+				options = { default_edition = "2024" },
+			},
 			biome = {
 				require_cwd = true,
 			},
