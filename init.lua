@@ -35,14 +35,8 @@ require("opts")
 require("plugins")
 require("highlight") -- important to run after plugins
 require("keymaps"):basic()
-require("keymaps"):telescope()
+require("keymaps"):fzf()
 require("commands")
-
--- Enable telescope fzf native, if installed (deferred so telescope can lazy-load)
-vim.schedule(function()
-	pcall(require("telescope").load_extension, "fzf")
-	pcall(require("telescope").load_extension, "git_worktree")
-end)
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

@@ -31,7 +31,6 @@ return {
 			})
 		end,
 	},
-	{ "ThePrimeagen/git-worktree.nvim" },
 	-- sandwich keymaps
 	{ "machakann/vim-sandwich" },
 	-- Multi cursor support
@@ -45,11 +44,6 @@ return {
 	},
 
 	-- Fuzzy Finder (files, Lsp, etc)
-	{
-		"nvim-telescope/telescope.nvim",
-		version = "*",
-		opts = require("config.telescope"),
-	},
 	{
 		"ibhagwan/fzf-lua",
 		config = function()

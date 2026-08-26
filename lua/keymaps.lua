@@ -10,7 +10,6 @@ function M:basic()
 	map({ "n", "i", "v" }, "<PageUp>", "<Nop>", { silent = true })
 	map({ "n", "i", "v" }, "<PageDown>", "<Nop>", { silent = true })
 
-	local sample = require("telescope.themes").get_dropdown({ winblend = 10, previewer = true })
 	-- Keymaps for better default experience
 	-- See `:help vim.keymap.set()`
 	map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
@@ -91,51 +90,24 @@ function M:basic()
 	map("n", "<leader>ql", [[<Cmd>clast<CR>]], { desc = "last [Q]uickfix item" })
 	map("n", "<leader>qt", [[<Cmd><CR>]], { desc = "next [Q]uickfix item" })
 	map("n", "<leader>qt", function()
-		require("telescope.builtin").quickfix(sample)
-	end, { desc = "[Q]uickfix [T]elescope" })
+		require("fzf-lua").quickfix()
+	end, { desc = "[Q]uickfix picker" })
 
-	M:gitworktree()
 	M:ts_text_objects()
 	require("config.ai.sidekick"):keys()
 	require("config.copilot"):keys()
 end
 
-function M:telescope()
-	--{{{
-	local fav_theme = function(builtin, previewer, opts)
-		if not previewer then
-			previewer = true
-		end
-		return function()
-			local theme = require("telescope.themes").get_dropdown({
-				winblend = 10,
-				previewer,
-			})
-			for k, v in pairs(opts or {}) do
-				theme[k] = v
-			end
-			require("telescope.builtin")[builtin](theme)
-		end
-	end
-	--}}}
-	-- See `:help telescope.builtin`
-	vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-	vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
+function M:fzf()
+	local fzf = require("fzf-lua")
+	vim.keymap.set("n", "<leader>?", fzf.oldfiles, { desc = "[?] Find recently opened files" })
+	vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "[ ] Find existing buffers" })
 
-	map("n", "gl", fav_theme("lsp_document_symbols"), { desc = "[G]o to [L]sp of symbols" })
-	map("n", "<leader><leader>", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
-	map("n", "<leader>fh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
-	map("n", "<leader>fg", function()
-		fav_theme("live_grep", true, {})()
-	end, { desc = "[S]earch by [G]rep" })
-	map("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
-	map("n", "<leader>fs", function()
-		local search = vim.fn.input("Search > ")
-		if search == "" then
-			return
-		end
-		fav_theme("grep_string", true, { search = search })()
-	end, { desc = "grep for words" })
+	map("n", "gl", fzf.lsp_document_symbols, { desc = "[G]o to [L]sp of symbols" })
+	map("n", "<leader><leader>", fzf.files, { desc = "[S]earch [F]iles" })
+	map("n", "<leader>fh", fzf.helptags, { desc = "[S]earch [H]elp" })
+	map("n", "<leader>fs", fzf.live_grep, { desc = "[S]earch by [G]rep" })
+	map("n", "<leader>fd", fzf.diagnostics_workspace, { desc = "[S]earch [D]iagnostics" })
 end
 
 function M.lsp()
@@ -149,12 +121,12 @@ function M.lsp()
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	nmap("<M-CR>", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-	nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-	nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+	nmap("gd", require("fzf-lua").lsp_definitions, "[G]oto [D]efinition")
+	nmap("gr", require("fzf-lua").lsp_references, "[G]oto [R]eferences")
+	nmap("gI", require("fzf-lua").lsp_implementations, "[G]oto [I]mplementation")
+	nmap("<leader>D", require("fzf-lua").lsp_typedefs, "Type [D]efinition")
+	nmap("<leader>ds", require("fzf-lua").lsp_document_symbols, "[D]ocument [S]ymbols")
+	nmap("<leader>ws", require("fzf-lua").lsp_live_workspace_symbols, "[W]orkspace [S]ymbols")
 
 	-- See `:help K` for why this keymap
 	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -196,24 +168,6 @@ end
 -- OIL (Plugin Manager)
 function M:oil()
 	return { { "-", "<CMD>Oil --float<CR>", mode = "n", desc = "Open parent directory" } }
-end
-
-function M:gitworktree()
-	map("n", "gw", function()
-		require("config.worktree").wtpicker({
-			onSelect = function(selection)
-				if selection == "List" then
-					require("telescope").extensions.git_worktree.git_worktrees()
-				elseif selection == "Create" then
-					require("config.worktree").wtCreate()
-				elseif selection == "Remove" then
-					require("config.worktree").wtRemove()
-				else
-					error("wt unkown option: " .. selection)
-				end
-			end,
-		})
-	end)
 end
 
 function M:gitSigns()
