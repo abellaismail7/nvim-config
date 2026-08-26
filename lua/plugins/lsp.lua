@@ -33,18 +33,8 @@ return {
 			require("config.lsp.flutter")
 		end,
 	},
-	-- Typescript
-	--{
-	--	'pmizio/typescript-tools.nvim',
-	--	opts = require 'config.lsp.ts',
-	--},
-
-	{
-		"yioneko/nvim-vtsls",
-		config = function()
-			--require('config.lsp.ts').setup()
-		end,
-	},
+	-- Typescript is handled by the builtin tsgo LSP (TypeScript 7 native preview),
+	-- see lsp/tsgo.lua and lua/config/lsp/tsgo.lua.
 
 	-- Format / Linting
 	{

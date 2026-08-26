@@ -16,7 +16,7 @@ local servers = {
 	"tailwindcss",
 	"jsonls",
 	"eslint",
-	"vtsls",
+	"tsgo",
 	"denols",
 	"gleam",
 	"copilot",
@@ -57,6 +57,9 @@ function M:setup()
 			if client:supports_method("textDocument/foldingRange") then
 				local win = vim.api.nvim_get_current_win()
 				vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+			end
+			if client.name == "tsgo" then
+				require("config.lsp.tsgo").setup(client, args.buf)
 			end
 		end,
 	})
