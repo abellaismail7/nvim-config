@@ -15,7 +15,7 @@ vim.pack.add({
 	"https://github.com/zbirenbaum/copilot.lua",
 
 	-- Snip
-	"https://github.com/L3MON4D3/LuaSnip",
+	"https://github.com/rafamadriz/friendly-snippets",
 
 	-- Vim Lord Belessings
 	"https://github.com/tpope/vim-fugitive",

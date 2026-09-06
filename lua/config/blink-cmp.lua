@@ -29,7 +29,7 @@ require("blink.cmp").setup({
 		nerd_font_variant = "normal",
 	},
 
-	snippets = { preset = "luasnip" },
+	snippets = { preset = "default" },
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
 	},
