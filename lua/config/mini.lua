@@ -26,6 +26,9 @@ require("mini.move").setup({
 
 require("mini.bufremove").setup()
 
+-- pick: also takes over `vim.ui.select`
+require("mini.pick").setup()
+
 -- misc: setup_auto_root replaces the chdir in startup.lua, zoom replaces <C-w>|
 require("mini.misc").setup()
 MiniMisc.setup_auto_root()

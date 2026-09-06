@@ -69,36 +69,13 @@ map("n", "<leader>ql", [[<Cmd>clast<CR>]] , { desc = "last [Q]uickfix item" })
 -- functions
 -- ---------------------------------------------------------------------------
 
--- copy the directory holding the current file to the clipboard
-local function copy_dir_path()
-	local path = vim.fn.expand("%:h")
-	if path == "" then
-		vim.notify("No file to copy path", vim.log.levels.WARN)
-		return
-	end
-	vim.fn.setreg("+", path)
-	vim.notify("Copied path to clipboard: " .. path, vim.log.levels.INFO)
-end
-
--- copy the path of the current file to the clipboard
-local function copy_file_path()
-	local path = vim.fn.expand("%")
-	if path == "" then
-		vim.notify("No file to copy filepath", vim.log.levels.WARN)
-		return
-	end
-	vim.fn.setreg("+", path)
-	vim.notify("Copied file path to clipboard: " .. path, vim.log.levels.INFO)
-end
-
 -- pick a quickfix entry through fzf-lua
 local function qf_picker()
 	require("fzf-lua").quickfix()
 end
 
 -- path
-map("n", "<leader>pp", copy_dir_path , { desc = "copy current path" })
-map("n", "<leader>pf", copy_file_path, { desc = "copy current file path" })
+map("n", "<leader>p", require("utils.copy-file-path"), { desc = "copy [P]ath of current file" })
 
 -- qf picker
 map("n", "<leader>qt", qf_picker, { desc = "[Q]uickfix picker" })
