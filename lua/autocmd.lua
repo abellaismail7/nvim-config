@@ -10,3 +10,12 @@ autocmd('TextYankPost', {
     end,
     group = highlight_group,
 })
+
+-- Spell check prose only, never code buffers
+autocmd('FileType', {
+    pattern = { 'markdown', 'text', 'gitcommit', 'tex', 'plaintex' },
+    callback = function()
+        vim.opt_local.spell = true
+    end,
+    group = augroup('Spell', { clear = true }),
+})

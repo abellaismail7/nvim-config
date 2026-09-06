@@ -58,9 +58,8 @@ vim.opt.splitbelow = true
 vim.g.VM_theme = "nord"
 vim.g.VM_leader = "\\"
 
--- spell
+-- spell (enabled per-filetype in autocmd.lua, not in code buffers)
 vim.opt.spelllang = "en_us,fr"
-vim.opt.spell = true
 
 -- disable folding
 vim.o.foldcolumn = "1" -- '0' is not bad
