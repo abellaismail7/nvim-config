@@ -7,6 +7,8 @@ require("config.fzf")
 require("config.nordic")
 require("config.lualine")
 require("config.tmux")
+require("config.mini-tabline")
 
 -- works out of the box
 require("fidget").setup()
+require("mini.pairs").setup({})

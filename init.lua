@@ -29,6 +29,10 @@ vim.pack.add({
 	-- Multi cursor support
 	"https://github.com/mg979/vim-visual-multi",
 
+	-- mini
+	"https://github.com/echasnovski/mini.pairs",
+	"https://github.com/echasnovski/mini.tabline",
+
 	-- tree-sitter
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	-- Git
