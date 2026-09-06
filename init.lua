@@ -7,7 +7,6 @@ require("autocmd")
 
 -- global deps
 vim.pack.add({
-	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/AlexvZyl/nordic.nvim",
@@ -24,14 +23,11 @@ vim.pack.add({
 	"https://github.com/kristijanhusak/vim-dadbod-completion",
 	"https://github.com/kristijanhusak/vim-dadbod-ui",
 
-	-- Sandwich keymaps
-	"https://github.com/machakann/vim-sandwich",
 	-- Multi cursor support
 	"https://github.com/mg979/vim-visual-multi",
 
 	-- mini
-	"https://github.com/echasnovski/mini.pairs",
-	"https://github.com/echasnovski/mini.tabline",
+	"https://github.com/echasnovski/mini.nvim",
 
 	-- tree-sitter
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
@@ -47,7 +43,6 @@ vim.pack.add({
 	{ src = "https://github.com/folke/lazydev.nvim" },
 
 	-- status line
-	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-lualine/lualine.nvim",
 
 	-- formatters
@@ -56,7 +51,6 @@ vim.pack.add({
 	{ src = "https://github.com/tiagovla/scope.nvim" },
 	{ src = "https://github.com/folke/snacks.nvim" },
 	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
-	{ src = "https://github.com/j-hui/fidget.nvim" },
 
 	-- 'https://github.com/'
 })

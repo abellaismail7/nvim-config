@@ -22,10 +22,7 @@ map("n", "<C-M-Up>", [[<C-w>-]], { desc = "resize window" })
 map("n", "<C-M-Right>", [[<C-w>>]], { desc = "resize window" })
 
 -- Maximizer
-map("n", "<leader>m", [[<C-w>|]], { desc = "maximize current window" })
-
-map("v", "<C-j>", "dp1V", { desc = "switch current with next" })
-map("v", "<C-k>", "dkP1v", { desc = "switch current with prev" })
+map("n", "<leader>m", require("mini.misc").zoom, { desc = "zoom current window" })
 
 -- Buffer navigation
 map("n", "<leader><Down>", [[gt]], { desc = "goto prev tab" })
@@ -45,7 +42,7 @@ map("n", "<C-S-Right>", [[:wincmd L<cr>]], { desc = "switch current window with 
 map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "copy whole file" })
 
 -- buffers
-map("n", "<leader>bc", [[<Cmd>bp|bd #<CR>]], { desc = "close current buffer" }) -- close buffer
+map("n", "<leader>bc", require("mini.bufremove").delete, { desc = "close current buffer" }) -- close buffer, keeping the window layout
 map("n", "<leader>bs", [[:w]], { desc = "save current buffer" }) -- save buffer
 -- registers
 map("v", "p", [["_dP]])

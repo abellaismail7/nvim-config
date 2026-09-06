@@ -1,3 +1,4 @@
+require("config.mini")
 require("config.snacks")
 require("config.blink-cmp")
 require("config.conform")
@@ -7,11 +8,8 @@ require("config.fzf")
 require("config.nordic")
 require("config.lualine")
 require("config.tmux")
-require("config.mini-tabline")
 require("config.git-signs")
 
 -- works out of the box
-require("fidget").setup()
 require("scope").setup()
 require("lazydev").setup()
-require("mini.pairs").setup({})
