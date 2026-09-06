@@ -11,4 +11,6 @@ require("config.mini-tabline")
 
 -- works out of the box
 require("fidget").setup()
+require("scope").setup()
+require("lazydev").setup()
 require("mini.pairs").setup({})
