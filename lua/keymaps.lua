@@ -28,11 +28,11 @@ map("n", "<C-M-Right>", [[<C-w>>]], { desc = "resize window" })
 -- Maximizer
 map("n", "<leader>m", require("mini.misc").zoom, { desc = "zoom current window" })
 
--- Buffer navigation
-map("n", "<leader><Down>" , [[gt]]                , { desc = "goto prev tab" })
-map("n", "<leader><Up>"   , [[gT]]                , { desc = "goto next tab" })
-map("n", "<leader><Left>" , [[<cmd>bnext<cr>]]    , { desc = "goto next buffer" })
-map("n", "<leader><Right>", [[<cmd>bprevious<cr>]], { desc = "goto prev buffer" })
+-- Buffer navigation (Down/Right go forward, Up/Left go back)
+map("n", "<leader><Down>" , [[gt]]                , { desc = "goto next tab" })
+map("n", "<leader><Up>"   , [[gT]]                , { desc = "goto prev tab" })
+map("n", "<leader><Right>", [[<cmd>bnext<cr>]]    , { desc = "goto next buffer" })
+map("n", "<leader><Left>" , [[<cmd>bprevious<cr>]], { desc = "goto prev buffer" })
 map("n", "<leader>tn"     , [[<cmd>tabnew<cr>]]   , { desc = "create new tab" })
 map("n", "<leader>tr"     , [[:TablineTabRename ]], { desc = "rename current tab" })
 
@@ -48,8 +48,6 @@ map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "copy whole file" })
 -- buffers
 -- close buffer, keeping the window layout
 map("n", "<leader>bc", require("mini.bufremove").delete, { desc = "close current buffer" })
--- save buffer
-map("n", "<leader>bs", [[:w]]                          , { desc = "save current buffer" })
 
 -- registers
 map("v", "p", [["_dP]])
