@@ -11,7 +11,7 @@ require('lualine').setup({
     },
     ignore_focus = {},
     always_divide_middle = true,
-    globalstatus = false,
+    globalstatus = true, -- keep the `laststatus = 3` set in opts.lua
     refresh = {
       statusline = 1000,
       tabline = 1000,
