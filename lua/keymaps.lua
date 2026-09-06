@@ -72,8 +72,27 @@ local function qf_picker()
 	require("fzf-lua").quickfix()
 end
 
+-- write the session under the name of the project root (MiniMisc.setup_auto_root
+-- keeps cwd there), so one project is always one session
+local function session_write()
+	MiniSessions.write(vim.fn.fnamemodify(vim.fn.getcwd(), ":t"))
+end
+
+local function session_read()
+	MiniSessions.select("read")
+end
+
+local function session_delete()
+	MiniSessions.select("delete")
+end
+
 -- path
 map("n", "<leader>p", require("utils.copy-file-path"), { desc = "copy [P]ath of current file" })
 
 -- qf picker
 map("n", "<leader>qt", qf_picker, { desc = "[Q]uickfix picker" })
+
+-- sessions
+map("n", "<leader>Sw", session_write , { desc = "[S]ession [w]rite for this project" })
+map("n", "<leader>Ss", session_read  , { desc = "[S]ession [s]elect and read" })
+map("n", "<leader>Sd", session_delete, { desc = "[S]ession [d]elete" })
