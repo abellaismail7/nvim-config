@@ -8,6 +8,7 @@ require("config.nordic")
 require("config.lualine")
 require("config.tmux")
 require("config.mini-tabline")
+require("config.git-signs")
 
 -- works out of the box
 require("fidget").setup()
