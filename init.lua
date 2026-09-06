@@ -1,62 +1,63 @@
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	-- print("lazy installing")
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
-end
-vim.opt.rtp:prepend(lazypath)
-
-local current = vim.fn.expand("%:p:h")
-if vim.fn.isdirectory(current) then
-	vim.fn.chdir(current)
-end
-
--- Theme
--- vim.cmd [[colorscheme habamax]]
-
--- Load modules
+-- options
 require("opts")
-require("plugins")
-require("highlight") -- important to run after plugins
-require("keymaps"):basic()
-require("keymaps"):fzf()
-require("commands")
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.hl.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+-- on:startup
+require("startup")
+require("autocmd")
+
+-- global deps
+vim.pack.add({
+	"https://github.com/nvim-tree/nvim-web-devicons",
+	"https://github.com/stevearc/oil.nvim",
+	"https://github.com/ibhagwan/fzf-lua",
+	"https://github.com/AlexvZyl/nordic.nvim",
+	"https://github.com/copilotlsp-nvim/copilot-lsp",
+	"https://github.com/zbirenbaum/copilot.lua",
+
+	-- Snip
+	"https://github.com/L3MON4D3/LuaSnip",
+
+	-- Vim Lord Belessings
+	"https://github.com/tpope/vim-fugitive",
+	"https://github.com/tpope/vim-dadbod",
+
+	"https://github.com/kristijanhusak/vim-dadbod-completion",
+	"https://github.com/kristijanhusak/vim-dadbod-ui",
+
+	-- Sandwich keymaps
+	"https://github.com/machakann/vim-sandwich",
+	-- Multi cursor support
+	"https://github.com/mg979/vim-visual-multi",
+
+	-- tree-sitter
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
+	-- Git
+	"https://github.com/lewis6991/gitsigns.nvim",
+
+	-- cmp
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
+
+	-- lsp plugins
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/mrcjkb/rustaceanvim", version = vim.version.range("^9") }, -- should be updated regulary
+	{ src = "https://github.com/folke/lazydev.nvim" },
+
+	-- status line
+	"https://github.com/nvim-tree/nvim-web-devicons",
+	"https://github.com/nvim-lualine/lualine.nvim",
+
+	-- formatters
+	{ src = "https://github.com/stevearc/conform.nvim" },
+	-- misc
+	{ src = "https://github.com/tiagovla/scope.nvim" },
+	{ src = "https://github.com/folke/snacks.nvim" },
+	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
+	{ src = "https://github.com/j-hui/fidget.nvim" },
+
+	-- 'https://github.com/'
 })
 
--- disable diagnostics in env
-local group = vim.api.nvim_create_augroup("__env", { clear = true })
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = ".env",
-	group = group,
-	callback = function(ev)
-		vim.diagnostic.enable(false, {
-			bufnr = ev.buf,
-		})
-	end,
-})
+require("config")
+require("lsp")
+require("keymaps")

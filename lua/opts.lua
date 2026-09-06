@@ -75,3 +75,5 @@ vim.g.markdown_fenced_languages = {
 	"ts=typescript",
 }
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
