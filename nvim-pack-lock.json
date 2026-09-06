@@ -71,10 +71,6 @@
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
     },
-    "techbase.nvim": {
-      "rev": "d5a512548fe37d3c7624ab1d5f7df7326ff6965b",
-      "src": "https://github.com/mcauley-penney/techbase.nvim"
-    },
     "vim-dadbod": {
       "rev": "6d1d41da4873a445c5605f2005ad2c68c99d8770",
       "src": "https://github.com/tpope/vim-dadbod"
