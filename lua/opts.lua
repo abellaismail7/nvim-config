@@ -29,6 +29,10 @@ vim.o.breakindent = true
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 
+-- Keep context around the cursor
+vim.o.scrolloff = 8
+vim.o.sidescrolloff = 8
+
 -- Save undo history
 vim.o.undofile = true
 
