@@ -39,6 +39,7 @@ vim.keymap.set("n", "<leader>?", fzf.oldfiles, { desc = "[?] Find recently opene
 vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "[ ] Find existing buffers" })
 
 vim.keymap.set("n", "gl", fzf.lsp_document_symbols, { desc = "[G]o to [L]sp of symbols" })
+vim.keymap.set("n", "gd", fzf.lsp_definitions, { desc = "[G]oto [D]efinition" })
 vim.keymap.set("n", "<leader><leader>", fzf.files, { desc = "[S]earch [F]iles" })
 vim.keymap.set("n", "<leader>fh", fzf.helptags, { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>fs", fzf.live_grep, { desc = "[S]earch by [G]rep" })
