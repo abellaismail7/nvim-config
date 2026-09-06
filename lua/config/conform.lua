@@ -2,7 +2,9 @@
 require("conform").setup({
 	format_on_save = {
 		timeout_ms = 500,
-		lsp_fallback = true,
+		lsp_format = "fallback",
+		-- the js/ts lists below are fallback chains, not pipelines
+		stop_after_first = true,
 	},
 	formatters_by_ft = {
 		lua = { "stylua" },
