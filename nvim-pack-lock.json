@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "LuaSnip": {
-      "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
-      "src": "https://github.com/L3MON4D3/LuaSnip"
-    },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
@@ -64,11 +60,6 @@
     "nvim-treesitter": {
       "rev": "41416e81a6c7f4af4984395bfe0cd8d174e70976",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
-      "version": "'main'"
-    },
-    "nvim-treesitter-textobjects": {
-      "rev": "5c7b0263797dfd1bd6202f2b219f3b53a80b2187",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },
     "nvim-web-devicons": {
