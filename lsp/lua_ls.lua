@@ -16,7 +16,7 @@ return {
     settings = {
         Lua = {
             runtime = {
-                version = "Lua 5.4",
+                version = "LuaJIT", -- neovim embeds LuaJIT (5.1), not 5.4
             },
             completion = {
                 enable = true,
